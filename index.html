@@ -2,120 +2,120 @@
 <html>
 <head>
     <meta charset="UTF-8">
-<title>宋杨 | 创业者 · 投资者 · AI学习者</title>
-<style>
-    #beijing-time{
-    margin:20px 0;
-    font-size:1.1rem;
-    color:#7dd3fc;
-    font-weight:bold;
-    text-align:center;
-    line-height:1.8;
-}
-   #starfield{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    z-index:0;
-    pointer-events:none;
-}
-body {
-    font-family:
-        "Microsoft YaHei",
-        "PingFang SC",
-        sans-serif;
-    margin: 0;
-    padding: 0;
-    background:#020617;
-    min-height: 100vh;
-    color: #f1f5f9;
-}
-.container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 40px;
-    text-align:center;
-    background:
-        rgba(255,255,255,0.08);
-    backdrop-filter: blur(15px);
-    border-radius: 25px;
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.4);
-    border:
-        1px solid rgba(255,255,255,0.15);
-        position:relative;
-    z-index:1;
-}
-h1 {
-    color: #38bdf8;
-    font-size: 2.6rem;
-    margin-bottom: 10px;
-}
-.subtitle {
-    color: #cbd5e1;
-    font-size: 1.2rem;
-}
-.avatar {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    margin: 30px auto;
-    display: block;
-    object-fit: cover;
-    border: 6px solid #38bdf8;
-    box-shadow:
-        0 0 30px rgba(56,189,248,0.7);
-}
-section {
-    margin-top: 30px;
-    padding: 25px;
-    background:
-        rgba(255,255,255,0.05);
-    border-radius: 18px;
-    transition: all 0.3s ease;
-}
-section:hover {
-    transform: translateY(-5px);
-    background:
-        rgba(255,255,255,0.08);
-}
-h2 {
-    color: #38bdf8;
-}
-p {
-    line-height: 1.8;
-}
-a {
-    color: #38bdf8;
-    text-decoration: none;
-}
-a:hover {
-    color: #7dd3fc;
-}
-small {
-    color: #94a3b8;
-}
-</style>
+    <!-- 新增移动端适配 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宋杨 | 创业者 · 投资者 · AI学习者</title>
+    <style>
+        #beijing-time{
+            margin:20px 0;
+            font-size:1.1rem;
+            color:#7dd3fc;
+            font-weight:bold;
+            text-align:center;
+            line-height:1.8;
+        }
+        #starfield{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            z-index:0;
+            pointer-events:none;
+        }
+        body {
+            font-family:
+                "Microsoft YaHei",
+                "PingFang SC",
+                sans-serif;
+            margin: 0;
+            padding: 0;
+            background:#020617;
+            min-height: 100vh;
+            color: #f1f5f9;
+            /* 修复滚动问题 */
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            text-align:center;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.15);
+            position:relative;
+            z-index:1;
+        }
+        h1 {
+            color: #38bdf8;
+            font-size: 2.6rem;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #cbd5e1;
+            font-size: 1.2rem;
+        }
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 30px auto;
+            display: block;
+            object-fit: cover;
+            border: 6px solid #38bdf8;
+            box-shadow: 0 0 30px rgba(56,189,248,0.7);
+            /* 头像加载失败时的样式 */
+            background: rgba(56,189,248,0.2);
+        }
+        section {
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 18px;
+            transition: all 0.3s ease;
+        }
+        section:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.08);
+        }
+        h2 {
+            color: #38bdf8;
+            margin-top: 0;
+        }
+        p {
+            line-height: 1.8;
+        }
+        a {
+            color: #38bdf8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #7dd3fc;
+        }
+        small {
+            color: #94a3b8;
+        }
+    </style>
 </head>
 
 <body>
     <canvas id="starfield"></canvas>
     <div class="container">
-      <h1>Song Yang</h1>
-<p class="subtitle">
-宋杨
-    
-创业者｜投资者｜AI学习者
-</p>
+        <h1>Song Yang</h1>
+        <p class="subtitle">
+            宋杨 | 创业者｜投资者｜AI学习者
+        </p>
         <!-- 头像位置（后面可以换成你的照片） -->
-       <img src="avatar.png" alt="我的头像" class="avatar">
+        <img src="avatar.png" alt="宋杨头像" class="avatar" onerror="this.style.display='none'">
         <div id="beijing-time"></div>
-<p>
-热爱学习 · AI探索者 · GitHub新手<br>
-正在利用 ChatGPT 与 Grok 打造自己的数字作品集
-</p>
+        <p>
+            热爱学习 · AI探索者 · GitHub新手<br>
+            正在利用 ChatGPT 与 Grok 打造自己的数字作品集
+        </p>
         <section>
             <h2>关于我</h2>
             <p>刚刚学会了如何用 GitHub 创建个人网站。<br>
@@ -128,94 +128,82 @@ small {
                • 逐步建立自己的作品集</p>
         </section>
         <section>
-    <h2>联系我</h2>
-    <p>
-        🐱
-        <a href="https://github.com/song18903182386-spec" target="_blank">
-            GitHub
-        </a>
-    </p>
-   <p>📧<a href="mailto:390355624@qq.com">390355624@qq.com</a></p>
-
-<p>📧<a href="mailto:song18903182386@gmail.com">song18903182386@gmail.com</a></p>
-</section>
+            <h2>联系我</h2>
+            <p>
+                🐱
+                <a href="https://github.com/song18903182386-spec" target="_blank">
+                    GitHub
+                </a>
+            </p>
+            <p>📧 390355624@qq.com</p>
+            <p>📧 song18903182386@gmail.com</p>
+        </section>
         <p><small>由 Grok 协助创建 · 2026年6月7日</small></p>
- </div>
-        <script>
-const canvas = document.getElementById('starfield');
-const ctx = canvas.getContext('2d');
-let stars = [];
-function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resize);
-resize();
-for(let i=0;i<200;i++) {
-    stars.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    r:Math.random()*2,
-    alpha:Math.random()
-});
-}
-function draw() {
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-    ctx.fillStyle='white';
-    stars.forEach(star=>{
-        ctx.beginPath();
-        ctx.arc(
-            star.x,
-            star.y,
-            star.r,
-            0,
-            Math.PI*2
-        );
-        ctx.fill();
-        star.y += star.v;
-        if(star.y > canvas.height){
-            star.y = 0;
-            star.x =
-            Math.random()*canvas.width;
+    </div>
+
+    <script>
+        // 星空背景动画
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
-    });
-    requestAnimationFrame(draw);
-}
-draw();function updateBeijingTime() {
-    const now = new Date();
-    const options = {
-        timeZone: 'Asia/Shanghai',
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        weekday: 'long',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    };
-    const timeString =
-        now.toLocaleString(
-            'zh-CN',
-            options
-        );
- document.getElementById(
-    'beijing-time'
-).innerHTML =
-`
-🛰️ 中国标准时间 CST<br>
-${timeString}
-`;
-}
-updateBeijingTime();
-setInterval(
-    updateBeijingTime,
-    1000
-);
-</script>
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        // 生成星星
+        for(let i=0;i<200;i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 2,
+                v: Math.random() * 0.3 + 0.05
+            });
+        }
+
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'white';
+            
+            stars.forEach(star => {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // 星星下落
+                star.y += star.v;
+                if(star.y > canvas.height) {
+                    star.y = 0;
+                    star.x = Math.random() * canvas.width;
+                }
+            });
+            requestAnimationFrame(drawStars);
+        }
+        drawStars();
+
+        // 实时北京时间
+        function updateBeijingTime() {
+            const now = new Date();
+            const options = {
+                timeZone: 'Asia/Shanghai',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                weekday: 'long',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            const timeString = now.toLocaleString('zh-CN', options);
+            document.getElementById('beijing-time').innerHTML = 
+            `🛰️ 中国标准时间 CST<br>${timeString}`;
+        }
+        updateBeijingTime();
+        setInterval(updateBeijingTime, 1000);
+    </script>
 </body>
 </html>
