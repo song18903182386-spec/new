@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>宋杨 | 创业者 · AI学习者 · 终身成长者</title>
+
+    <!-- 访客统计 仅首页加载 -->
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
     <style>
         :root {
             --main-color: #a78bfa;
@@ -410,6 +414,37 @@ setTheme(saved);
 toggleBtn.addEventListener('click', () => {
   const current = localStorage.getItem('theme');
   setTheme(current === 'blue' ? 'purple' : 'blue');
+});
+</script>
+
+<!-- ====================== 以下为新增：统计 + 音乐 ====================== -->
+
+<!-- 全站访问统计 -->
+<div style="position:fixed;bottom:20px;left:20px;color:var(--text-main);font-size:0.9rem;z-index:99999;">
+    总访问量：<span id="busuanzi_value_site_pv"></span> &nbsp; 访客数：<span id="busuanzi_value_site_uv"></span>
+</div>
+
+<!-- 背景音乐 -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="https://cdn.freesound.org/previews/636/636962_1370189-lq.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn" style="position:fixed;bottom:50px;left:20px;padding:6px 12px;border-radius:12px;background:var(--main-color);color:#fff;border:none;cursor:pointer;z-index:99999;font-size:0.8rem;">
+    播放音乐
+</button>
+
+<script>
+const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+
+musicBtn.addEventListener('click', () => {
+    if (bgMusic.paused) {
+        bgMusic.play();
+        musicBtn.textContent = "暂停音乐";
+    } else {
+        bgMusic.pause();
+        musicBtn.textContent = "播放音乐";
+    }
 });
 </script>
 
