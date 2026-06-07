@@ -262,6 +262,20 @@
     }
     draw(0);
 </script>
+<button id="toggleTheme" style="position:fixed;bottom:20px;right:20px;padding:10px 14px;border-radius:50px;background:var(--main-color);color:#fff;border:none;cursor:pointer;">切换风格</button>
 
+<script>
+const toggleBtn = document.getElementById('toggleTheme');
+const html = document.documentElement;
+
+if (localStorage.getItem('theme') === 'light') {
+    html.classList.add('light');
+}
+
+toggleBtn.addEventListener('click', () => {
+    html.classList.toggle('light');
+    localStorage.setItem('theme', html.classList.contains('light') ? 'light' : 'dark');
+});
+</script>
 </body>
 </html>
