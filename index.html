@@ -153,11 +153,11 @@ window.addEventListener('resize', resize);
 resize();
 for(let i=0;i<200;i++) {
     stars.push({
-        x:Math.random()*canvas.width,
-        y:Math.random()*canvas.height,
-        r:Math.random()*2,
-        v:Math.random()*0.3+0.05
-    });
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2,
+    alpha:Math.random()
+});
 }
 function draw() {
     ctx.clearRect(
