@@ -1,254 +1,84 @@
-<!DOCTYPE html>
-<!-- HTML5 文档声明 -->
-<html>
-<head>
-    <!-- 字符编码：支持中文 -->
-    <meta charset="UTF-8">
-    <!-- 移动端适配：禁止缩放，适配屏幕 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <!-- 浏览器标签标题 -->
-    <title>宋杨 | 创业者 · 投资者 · AI学习者</title>
-    <style>
-        /* 全局CSS变量，统一管理颜色，便于换主题 */
-        :root {
-            --main-color: #38bdf8;
-            --light-color: #7dd3fc;
-            --bg-dark: #020617;
-            --text-main: #f1f5f9;
-            --text-gray: #94a3b8;
-            --card-bg: rgba(255,255,255,0.08);
-            --section-bg: rgba(255,255,255,0.05);
-        }
+<!-- 星空画布 -->
+<canvas id="starfield"></canvas>
 
-        /* 文本选中样式 */
-        ::selection {
-            background: var(--main-color);
-            color: var(--bg-dark);
-        }
+<!-- 主内容容器 -->
+<div class="container">
+    <h1>Song Yang</h1>
+    <p class="subtitle">宋杨<br>创业者 · AI学习者 · 终身成长者<br>Entrepreneur · AI Learner · Lifelong Learner</p>
 
-        /* 北京时间模块样式 */
-        #beijing-time{
-            margin:20px 0;
-            font-size:1.1rem;
-            color:var(--light-color);
-            font-weight:bold;
-            text-align:center;
-            line-height:1.8;
-        }
+    <!-- 头像，加载失败自动隐藏 -->
+    <img src="avatar.png" alt="宋杨头像" class="avatar" onerror="this.style.display='none'">
+    
+    <!-- 北京时间展示区域 -->
+    <div id="beijing-time"></div>
 
-        /* 星空画布 */
-        #starfield{
-            position:fixed;
-            top:0;
-            left:0;
-            width:100%;
-            height:100%;
-            z-index:0;
-            pointer-events:none;
-            background: var(--bg-dark);
-        }
+    <!-- 首页简介 -->
+    <p>
+        24年创业经历 · 持续学习者 · AI探索者<br>
+        Entrepreneur · Lifelong Learner · AI Explorer<br><br>
+        关注品牌建设、数字化工具与人工智能应用，<br>
+        记录学习、实践与成长。<br>
+        Exploring branding, digital tools and artificial intelligence.<br>
+        Documenting learning, practice and personal growth.
+    </p>
 
-        /* 页面整体样式 */
-        body {
-            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
-            margin: 0;
-            padding: 0;
-            background:var(--bg-dark);
-            min-height: 100vh;
-            color: var(--text-main);
-            overflow-x: hidden;
-            scroll-behavior: smooth; /* 平滑滚动 */
-        }
-
-        /* 主内容容器 */
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 40px;
-            text-align:center;
-            background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            border-radius: 25px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.15);
-            position:relative;
-            z-index:1;
-            animation: fadeIn 1s ease forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        /* 页面淡入动画 */
-        @keyframes fadeIn {
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            }
-        }
-
-        /* 主标题 */
-        h1 {
-            color: var(--main-color);
-            font-size: 2.6rem;
-            margin-bottom: 10px;
-        }
-
-        /* 副标题 */
-        .subtitle {
-            color: #cbd5e1;
-            font-size: 1.2rem;
-        }
-
-        /* 头像样式 */
-        .avatar {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            margin: 30px auto;
-            display: block;
-            object-fit: cover;
-            border: 6px solid var(--main-color);
-            box-shadow: 0 0 30px rgba(56,189,248,0.7);
-            background: rgba(56,189,248,0.2);
-            animation: glow 3s infinite ease-in-out;
-        }
-
-        /* 头像呼吸光效 */
-        @keyframes glow {
-            0% { box-shadow: 0 0 25px rgba(56,189,248,0.6); }
-            50% { box-shadow: 0 0 40px rgba(56,189,248,1); }
-            100% { box-shadow: 0 0 25px rgba(56,189,248,0.6); }
-        }
-
-        /* 内容模块 */
-        section {
-            margin-top: 30px;
-            padding: 25px;
-            background: var(--section-bg);
-            border-radius: 18px;
-            transition: all 0.3s ease;
-        }
-
-        /* 模块悬浮效果 */
-        section:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.08);
-        }
-
-        /* 二级标题 */
-        h2 {
-            color: var(--main-color);
-            margin-top: 0;
-        }
-
-        /* 段落文字 */
-        p {
-            line-height: 1.8;
-        }
-
-        /* 超链接样式 */
-        a {
-            color: var(--main-color);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        a:hover {
-            color: var(--light-color);
-        }
-        a:active {
-            color: #0ea5e9;
-        }
-
-        /* 底部小字 */
-        small {
-            color: var(--text-gray);
-        }
-
-        /* 移动端适配：屏幕宽度小于768px时生效 */
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-                margin: 20px auto;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-            .avatar {
-                width: 140px;
-                height: 140px;
-            }
-            section {
-                padding: 18px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <!-- 星空画布 -->
-    <canvas id="starfield"></canvas>
-
-    <!-- 主内容容器 -->
-    <div class="container">
-        <h1>Song Yang</h1>
-        <p class="subtitle">宋杨 | 创业者｜投资者｜AI学习者</p>
-
-        <!-- 头像，加载失败自动隐藏 -->
-        <img src="avatar.png" alt="宋杨头像" class="avatar" onerror="this.style.display='none'">
-        
-        <!-- 北京时间展示区域 -->
-        <div id="beijing-time"></div>
-
-        <!-- 简介标语 -->
+    <!-- 个人简介模块（中英双语） -->
+    <section>
+        <h2>个人简介 / Profile</h2>
         <p>
-            热爱学习 · AI探索者 · GitHub新手<br>
-            Enthusiastic Learner · AI Explorer · GitHub Beginner<br>
-            正在利用 ChatGPT\Grok\等AI 打造自己的数字作品集<br>
-            Building digital portfolio with ChatGPT, Grok and other AI tools
+            深耕广告标识、亮化工程、LED工程、展厅装修、铝板幕墙、门头店招等领域二十余年。<br>
+            始终相信持续学习能够带来新的机会与可能。<br>
+            目前正在探索人工智能技术在工作、学习和个人成长中的应用。<br><br>
+            Engaged in advertising signs, lighting projects, LED engineering, exhibition decoration and facade systems for more than two decades.<br>
+            Strong believer in lifelong learning and continuous improvement.<br>
+            Currently exploring the application of artificial intelligence in work, learning and personal development.
         </p>
+    </section>
 
-        <!-- 个人简介模块（中英双语） -->
-        <section>
-            <h2>个人简介 / Profile</h2>
-            <p>
-                深耕广告标识、亮化工程、LED工程、展厅装修、铝板幕墙、门头店招等领域24年，务实做事，稳步前行。<br>
-                Engaged in advertising signs, lighting projects, exhibition halls and curtain walls for many years, pragmatic and steady.<br><br>
-                同时专注价值投资，拥抱人工智能新趋势，持续学习，不断成长。<br>
-                Focus on value investment, embrace the new trend of artificial intelligence, keep learning and improving.
-            </p>
-        </section>
+    <!-- 关于我模块（中英双语） -->
+    <section>
+        <h2>关于我 / About Me</h2>
+        <p>
+            通过 GitHub 搭建个人网站，记录学习过程与实践成果。<br>
+            希望把自己的经验、思考与成长轨迹长期保存下来。<br>
+            未来将持续分享 AI 学习记录、项目实践和个人成长内容。<br><br>
+            Built this website with GitHub Pages to document learning and practical projects.<br>
+            A place to preserve experiences, ideas and personal growth.<br>
+            Will continue sharing AI learning notes, project practices and reflections.
+        </p>
+    </section>
 
-        <!-- 关于我模块（中英双语） -->
-        <section>
-            <h2>关于我 / About Me</h2>
-            <p>刚刚学会了如何用 GitHub 创建个人网站。<br>
-               Just learned to build personal website via GitHub.<br><br>
-               未来会在这里记录学习笔记和做一些小项目。<br>
-               Will record study notes and develop small projects here in the future.</p>
-        </section>
+    <!-- 我的目标模块（中英双语） -->
+    <section>
+        <h2>我的目标 / Goals</h2>
+        <p>
+            • 保持终身学习的习惯 / Maintain a lifelong learning mindset<br>
+            • 探索 AI 在实际工作中的应用 / Explore practical AI applications<br>
+            • 建立个人数字作品集 / Build a personal digital portfolio<br>
+            • 分享经验与成长记录 / Share experiences and growth journeys
+        </p>
+    </section>
 
-        <!-- 我的目标模块（中英双语） -->
-        <section>
-            <h2>我的目标 / Goals</h2>
-            <p>• 坚持每天学习 / Keep learning every day<br>
-               • 结合 AI 做出更多有趣的小工具 / Create practical tools with AI<br>
-               • 逐步建立自己的作品集 / Build personal portfolio step by step</p>
-        </section>
+    <!-- 新增：关注领域模块 -->
+    <section>
+        <h2>关注领域 / Areas of Interest</h2>
+        <p>
+            🤖 人工智能应用 / Artificial Intelligence<br>
+            🏢 企业经营与管理 / Business & Management<br>
+            🎨 品牌设计与视觉传播 / Branding & Visual Communication<br>
+            🌐 数字化工具与效率提升 / Digital Tools & Productivity<br>
+            📚 终身学习 / Lifelong Learning
+        </p>
+    </section>
 
-        <!-- 联系我模块，邮箱改为 mailto 邮件链接 -->
-        <section>
-            <h2>联系我 / Contact</h2>
-            <p>🐱 <a href="https://github.com/song18903182386-spec" target="_blank">GitHub</a></p>
-            <!-- 点击唤起邮件客户端，自动填充收件人 -->
-            <p>📧 <a href="mailto:390355624@qq.com">390355624@qq.com</a></p>
-            <p>📧 <a href="mailto:song18903182386@gmail.com">song18903182386@gmail.com</a></p>
-        </section>
+    <!-- 联系我模块，邮箱保留 mailto 邮件链接 -->
+    <section>
+        <h2>联系方式 / Contact</h2>
+        <p>🐱 <a href="https://github.com/song18903182386-spec" target="_blank">GitHub</a></p>
+        <p>📧 <a href="mailto:390355624@qq.com">390355624@qq.com</a></p>
+        <p>📧 <a href="mailto:song18903182386@gmail.com">song18903182386@gmail.com</p>
+    </section>
 
-        <!-- 底部版权 -->
-        <p><small>由 AI协会 协助创建 · 2026年6月7日<br>Created with AI Assistance · June 7, 2026</small></p>
-    </div>
-
-    <script>
-        // 星空+流星动画
-        const canvas = document.getElementById('starfield');
-        const ctx = canvas.getContext('2d');
+    <!-- 底部新版版权 -->
+    <p><small>© 2026 Song Yang<br>Built with GitHub Pages & AI</small></p>
+</div>
