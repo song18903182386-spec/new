@@ -1,34 +1,20 @@
 <!DOCTYPE html>
-<!-- HTML5 文档声明 -->
 <html>
 <head>
-    <!-- 字符编码：支持中文 -->
     <meta charset="UTF-8">
-    <!-- 移动端适配：禁止缩放，适配屏幕 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <!-- 浏览器标签标题 -->
     <title>宋杨 | 创业者 · AI学习者 · 终身成长者</title>
     <style>
-        /* 全局CSS变量：暗夜紫蓝主题 */
-       :root {
-    --main-color: #a78bfa;
-    --light-color: #c4b5fd;
-    --bg-dark: #0f0f1e;
-    --text-main: #f5f3ff;
-    --text-gray: #a8a29e;
-    --card-bg: rgba(255,255,255,0.07);
-    --section-bg: rgba(255,255,255,0.04);
-}
-:root.light {
-    --main-color: #7c3aed;
-    --light-color: #a78bfa;
-    --bg-dark: #f8fafc;
-    --text-main: #1e293b;
-    --text-gray: #475569;
-    --card-bg: #ffffff;
-    --section-bg: #f1f5f9;
-}
-        /* 顶部通用导航栏 */
+        :root {
+            --main-color: #a78bfa;
+            --light-color: #c4b5fd;
+            --bg-dark: #0f0f1e;
+            --text-main: #f5f3ff;
+            --text-gray: #a8a29e;
+            --card-bg: rgba(255,255,255,0.07);
+            --section-bg: rgba(255,255,255,0.04);
+        }
+
         .navbar {
             position: fixed;
             top: 0;
@@ -52,13 +38,11 @@
             color: var(--main-color);
         }
 
-        /* 文本选中样式 */
         ::selection {
             background: var(--main-color);
             color: var(--bg-dark);
         }
 
-        /* 北京时间模块样式 */
         #beijing-time{
             margin:20px 0;
             font-size:1.1rem;
@@ -68,7 +52,6 @@
             line-height:1.8;
         }
 
-        /* 星空画布 */
         #starfield{
             position:fixed;
             top:0;
@@ -80,7 +63,6 @@
             background: var(--bg-dark);
         }
 
-        /* 页面整体样式 */
         body {
             font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
             margin: 0;
@@ -90,9 +72,9 @@
             color: var(--text-main);
             overflow-x: hidden;
             scroll-behavior: smooth;
+            transition: all 0.3s ease;
         }
 
-        /* 主内容容器 */
         .container {
             max-width: 900px;
             margin: 100px auto 40px;
@@ -110,7 +92,6 @@
             transform: translateY(20px);
         }
 
-        /* 页面淡入动画 */
         @keyframes fadeIn {
             to { 
                 opacity: 1; 
@@ -118,20 +99,17 @@
             }
         }
 
-        /* 主标题 */
         h1 {
             color: var(--main-color);
             font-size: 2.6rem;
             margin-bottom: 10px;
         }
 
-        /* 副标题 */
         .subtitle {
             color: #cbd5e1;
             font-size: 1.2rem;
         }
 
-        /* 头像样式 */
         .avatar {
             width: 180px;
             height: 180px;
@@ -145,14 +123,12 @@
             animation: glow 3s infinite ease-in-out;
         }
 
-        /* 头像呼吸光效 */
         @keyframes glow {
             0% { box-shadow: 0 0 25px rgba(167,139,250,0.6); }
             50% { box-shadow: 0 0 40px rgba(167,139,250,1); }
             100% { box-shadow: 0 0 25px rgba(167,139,250,0.6); }
         }
 
-        /* 内容模块 */
         section {
             margin-top: 30px;
             padding: 25px;
@@ -161,24 +137,20 @@
             transition: all 0.3s ease;
         }
 
-        /* 模块悬浮效果 */
         section:hover {
             transform: translateY(-5px);
             background: rgba(255,255,255,0.08);
         }
 
-        /* 二级标题 */
         h2 {
             color: var(--main-color);
             margin-top: 0;
         }
 
-        /* 段落文字 */
         p {
             line-height: 1.8;
         }
 
-        /* 超链接样式 */
         a {
             color: var(--main-color);
             text-decoration: none;
@@ -187,16 +159,11 @@
         a:hover {
             color: var(--light-color);
         }
-        a:active {
-            color: #8b5cf6;
-        }
 
-        /* 底部小字 */
         small {
             color: var(--text-gray);
         }
 
-        /* 移动端适配 */
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
@@ -222,7 +189,6 @@
 
 <body>
 
-<!-- 顶部全局导航 -->
 <div class="navbar">
     <a href="index.html">首页</a>
     <a href="xuexi.html">学习笔记</a>
@@ -232,10 +198,8 @@
     <a href="about.html">关于我</a>
 </div>
 
-<!-- 星空画布 -->
 <canvas id="starfield"></canvas>
 
-<!-- 主内容容器 -->
 <div class="container">
     <h1>Song Yang</h1>
     <p class="subtitle">宋杨<br>创业者 · AI学习者 · 终身成长者<br>Entrepreneur · AI Learner · Lifelong Learner</p>
@@ -309,8 +273,8 @@
     <p><small>© 2026 Song Yang<br>Built with GitHub Pages & AI</small></p>
 </div>
 
+<!-- 星空与时间 JS -->
 <script>
-    // 星空 + 紫色流星动画
     const canvas = document.getElementById('starfield');
     const ctx = canvas.getContext('2d');
     let stars = [];
@@ -392,7 +356,6 @@
     }
     drawStars(0);
 
-    // 实时北京时间
     function updateBeijingTime() {
         const now = new Date();
         const options = {
@@ -411,20 +374,44 @@
     updateBeijingTime();
     setInterval(updateBeijingTime, 1000);
 </script>
-<button id="toggleTheme" style="position:fixed;bottom:20px;right:20px;padding:10px 14px;border-radius:50px;background:var(--main-color);color:#fff;border:none;cursor:pointer;">切换风格</button>
+
+<!-- 主题切换按钮 -->
+<button id="toggleTheme" style="position:fixed;bottom:20px;right:20px;padding:10px 16px;border-radius:50px;background:var(--main-color);color:#fff;border:none;cursor:pointer;z-index:99999;">切换风格</button>
 
 <script>
 const toggleBtn = document.getElementById('toggleTheme');
-const html = document.documentElement;
+const root = document.documentElement;
 
-if (localStorage.getItem('theme') === 'light') {
-    html.classList.add('light');
+function setTheme(theme) {
+  if (theme === 'blue') {
+    root.style.setProperty('--main-color', '#60a5fa');
+    root.style.setProperty('--light-color', '#93c5fd');
+    root.style.setProperty('--bg-dark', '#0f172a');
+    root.style.setProperty('--text-main', '#f1f5f9');
+    root.style.setProperty('--text-gray', '#94a3b8');
+    root.style.setProperty('--card-bg', 'rgba(255,255,255,0.05)');
+    root.style.setProperty('--section-bg', 'rgba(255,255,255,0.03)');
+    localStorage.setItem('theme', 'blue');
+  } else {
+    root.style.setProperty('--main-color', '#a78bfa');
+    root.style.setProperty('--light-color', '#c4b5fd');
+    root.style.setProperty('--bg-dark', '#0f0f1e');
+    root.style.setProperty('--text-main', '#f5f3ff');
+    root.style.setProperty('--text-gray', '#a8a29e');
+    root.style.setProperty('--card-bg', 'rgba(255,255,255,0.07)');
+    root.style.setProperty('--section-bg', 'rgba(255,255,255,0.04)');
+    localStorage.setItem('theme', 'purple');
+  }
 }
 
+const saved = localStorage.getItem('theme');
+setTheme(saved);
+
 toggleBtn.addEventListener('click', () => {
-    html.classList.toggle('light');
-    localStorage.setItem('theme', html.classList.contains('light') ? 'light' : 'dark');
+  const current = localStorage.getItem('theme');
+  setTheme(current === 'blue' ? 'purple' : 'blue');
 });
 </script>
+
 </body>
 </html>
