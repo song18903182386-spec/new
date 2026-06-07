@@ -262,19 +262,40 @@
     }
     draw(0);
 </script>
-<button id="toggleTheme" style="position:fixed;bottom:20px;right:20px;padding:10px 14px;border-radius:50px;background:var(--main-color);color:#fff;border:none;cursor:pointer;">切换风格</button>
+<button id="toggleTheme" style="position:fixed;bottom:20px;right:20px;padding:10px 16px;border-radius:50px;background:var(--main-color);color:#fff;border:none;cursor:pointer;z-index:99999;">切换风格</button>
 
 <script>
 const toggleBtn = document.getElementById('toggleTheme');
-const html = document.documentElement;
+const root = document.documentElement;
 
-if (localStorage.getItem('theme') === 'light') {
-    html.classList.add('light');
+function setTheme(theme) {
+  if (theme === 'blue') {
+    root.style.setProperty('--main-color', '#60a5fa');
+    root.style.setProperty('--light-color', '#93c5fd');
+    root.style.setProperty('--bg-dark', '#0f172a');
+    root.style.setProperty('--text-main', '#f1f5f9');
+    root.style.setProperty('--text-gray', '#94a3b8');
+    root.style.setProperty('--card-bg', 'rgba(255,255,255,0.05)');
+    root.style.setProperty('--section-bg', 'rgba(255,255,255,0.03)');
+    localStorage.setItem('theme', 'blue');
+  } else {
+    root.style.setProperty('--main-color', '#a78bfa');
+    root.style.setProperty('--light-color', '#c4b5fd');
+    root.style.setProperty('--bg-dark', '#0f0f1e');
+    root.style.setProperty('--text-main', '#f5f3ff');
+    root.style.setProperty('--text-gray', '#a8a29e');
+    root.style.setProperty('--card-bg', 'rgba(255,255,255,0.07)');
+    root.style.setProperty('--section-bg', 'rgba(255,255,255,0.04)');
+    localStorage.setItem('theme', 'purple');
+  }
 }
 
+const saved = localStorage.getItem('theme');
+setTheme(saved);
+
 toggleBtn.addEventListener('click', () => {
-    html.classList.toggle('light');
-    localStorage.setItem('theme', html.classList.contains('light') ? 'light' : 'dark');
+  const current = localStorage.getItem('theme');
+  setTheme(current === 'blue' ? 'purple' : 'blue');
 });
 </script>
 </body>
