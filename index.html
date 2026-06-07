@@ -8,10 +8,8 @@
     position:fixed;
     top:0;
     left:0;
-
     width:100%;
     height:100%;
-
     z-index:-1;
 }
 body {
@@ -19,105 +17,72 @@ body {
         "Microsoft YaHei",
         "PingFang SC",
         sans-serif;
-
     margin: 0;
     padding: 0;
-
     background:#020617;
-        );
-
     min-height: 100vh;
-
     color: #f1f5f9;
 }
 
 .container {
     max-width: 900px;
-
     margin: 40px auto;
-
     padding: 40px;
-
     background:
         rgba(255,255,255,0.08);
-
     backdrop-filter: blur(15px);
-
     border-radius: 25px;
-
     box-shadow:
         0 20px 60px rgba(0,0,0,0.4);
-
     border:
         1px solid rgba(255,255,255,0.15);
 }
-
 h1 {
     color: #38bdf8;
     font-size: 2.6rem;
     margin-bottom: 10px;
 }
-
 .subtitle {
     color: #cbd5e1;
     font-size: 1.2rem;
 }
-
 .avatar {
     width: 180px;
     height: 180px;
-
     border-radius: 50%;
-
     margin: 30px auto;
-
     display: block;
-
     object-fit: cover;
-
     border: 6px solid #38bdf8;
-
     box-shadow:
         0 0 30px rgba(56,189,248,0.7);
 }
-
 section {
     margin-top: 30px;
-
     padding: 25px;
-
     background:
         rgba(255,255,255,0.05);
-
     border-radius: 18px;
-
     transition: all 0.3s ease;
 }
-
 section:hover {
     transform: translateY(-5px);
-
     background:
         rgba(255,255,255,0.08);
 }
-
 h2 {
     color: #38bdf8;
 }
-
 p {
     line-height: 1.8;
 }
-
 a {
     color: #38bdf8;
     text-decoration: none;
 }
-
 a:hover {
     color: #7dd3fc;
 }
-
 small {
     color: #94a3b8;
 }
@@ -126,17 +91,13 @@ small {
     <script>
 const canvas = document.getElementById('starfield');
 const ctx = canvas.getContext('2d');
-
 let stars = [];
-
 function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 }
-
 window.addEventListener('resize', resize);
 resize();
-
 for(let i=0;i<200;i++) {
     stars.push({
         x:Math.random()*canvas.width,
@@ -145,22 +106,16 @@ for(let i=0;i<200;i++) {
         v:Math.random()*0.3+0.05
     });
 }
-
 function draw() {
-
     ctx.clearRect(
         0,
         0,
         canvas.width,
         canvas.height
     );
-
     ctx.fillStyle='white';
-
     stars.forEach(star=>{
-
         ctx.beginPath();
-
         ctx.arc(
             star.x,
             star.y,
@@ -168,30 +123,22 @@ function draw() {
             0,
             Math.PI*2
         );
-
         ctx.fill();
-
         star.y += star.v;
-
         if(star.y > canvas.height){
-
             star.y = 0;
-
             star.x =
             Math.random()*canvas.width;
         }
     });
-
     requestAnimationFrame(draw);
 }
-
 draw();
 </script>
 <body>
     <canvas id="starfield"></canvas>
     <div class="container">
       <h1>Song Yang</h1>
-
 <p class="subtitle">
 AI 探索者 · GitHub 学习者 · 终身成长者
 </p>
@@ -206,14 +153,12 @@ AI 探索者 · GitHub 学习者 · 终身成长者
             <p>刚刚学会了如何用 GitHub 创建个人网站。<br>
                未来会在这里记录学习笔记和做一些小项目。</p>
         </section>
-
         <section>
             <h2>我的目标</h2>
             <p>• 坚持每天学习<br>
                • 结合 Grok 做出更多有趣的小工具<br>
                • 逐步建立自己的作品集</p>
         </section>
-
         <section>
             <h2>联系我</h2>
             <p>
@@ -222,7 +167,6 @@ AI 探索者 · GitHub 学习者 · 终身成长者
                          song18903182386@gmail.com
             </p>
         </section>
-
         <p><small>由 Grok 协助创建 · 2026年6月7日</small></p>
     </div>
 </body>
