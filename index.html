@@ -1,18 +1,42 @@
 <!DOCTYPE html>
+<!-- HTML5 文档声明 -->
 <html>
 <head>
+    <!-- 字符编码：支持中文 -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 移动端适配：禁止缩放，适配屏幕 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- 浏览器标签标题 -->
     <title>宋杨 | 创业者 · 投资者 · AI学习者</title>
     <style>
+        /* 全局CSS变量，统一管理颜色，便于换主题 */
+        :root {
+            --main-color: #38bdf8;
+            --light-color: #7dd3fc;
+            --bg-dark: #020617;
+            --text-main: #f1f5f9;
+            --text-gray: #94a3b8;
+            --card-bg: rgba(255,255,255,0.08);
+            --section-bg: rgba(255,255,255,0.05);
+        }
+
+        /* 文本选中样式 */
+        ::selection {
+            background: var(--main-color);
+            color: var(--bg-dark);
+        }
+
+        /* 北京时间模块样式 */
         #beijing-time{
             margin:20px 0;
             font-size:1.1rem;
-            color:#7dd3fc;
+            color:var(--light-color);
             font-weight:bold;
             text-align:center;
             line-height:1.8;
         }
+
+        /* 星空画布 */
         #starfield{
             position:fixed;
             top:0;
@@ -21,24 +45,28 @@
             height:100%;
             z-index:0;
             pointer-events:none;
-            background: #020617;
+            background: var(--bg-dark);
         }
+
+        /* 页面整体样式 */
         body {
             font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
             margin: 0;
             padding: 0;
-            background:#020617;
+            background:var(--bg-dark);
             min-height: 100vh;
-            color: #f1f5f9;
+            color: var(--text-main);
             overflow-x: hidden;
-            scroll-behavior: smooth;
+            scroll-behavior: smooth; /* 平滑滚动 */
         }
+
+        /* 主内容容器 */
         .container {
             max-width: 900px;
             margin: 40px auto;
             padding: 40px;
             text-align:center;
-            background: rgba(255,255,255,0.08);
+            background: var(--card-bg);
             backdrop-filter: blur(15px);
             border-radius: 25px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.4);
@@ -49,6 +77,7 @@
             opacity: 0;
             transform: translateY(20px);
         }
+
         /* 页面淡入动画 */
         @keyframes fadeIn {
             to { 
@@ -56,15 +85,21 @@
                 transform: translateY(0); 
             }
         }
+
+        /* 主标题 */
         h1 {
-            color: #38bdf8;
+            color: var(--main-color);
             font-size: 2.6rem;
             margin-bottom: 10px;
         }
+
+        /* 副标题 */
         .subtitle {
             color: #cbd5e1;
             font-size: 1.2rem;
         }
+
+        /* 头像样式 */
         .avatar {
             width: 180px;
             height: 180px;
@@ -72,63 +107,105 @@
             margin: 30px auto;
             display: block;
             object-fit: cover;
-            border: 6px solid #38bdf8;
+            border: 6px solid var(--main-color);
             box-shadow: 0 0 30px rgba(56,189,248,0.7);
             background: rgba(56,189,248,0.2);
             animation: glow 3s infinite ease-in-out;
         }
+
         /* 头像呼吸光效 */
         @keyframes glow {
             0% { box-shadow: 0 0 25px rgba(56,189,248,0.6); }
             50% { box-shadow: 0 0 40px rgba(56,189,248,1); }
             100% { box-shadow: 0 0 25px rgba(56,189,248,0.6); }
         }
+
+        /* 内容模块 */
         section {
             margin-top: 30px;
             padding: 25px;
-            background: rgba(255,255,255,0.05);
+            background: var(--section-bg);
             border-radius: 18px;
             transition: all 0.3s ease;
         }
+
+        /* 模块悬浮效果 */
         section:hover {
             transform: translateY(-5px);
             background: rgba(255,255,255,0.08);
         }
+
+        /* 二级标题 */
         h2 {
-            color: #38bdf8;
+            color: var(--main-color);
             margin-top: 0;
         }
+
+        /* 段落文字 */
         p {
             line-height: 1.8;
         }
+
+        /* 超链接样式 */
         a {
-            color: #38bdf8;
+            color: var(--main-color);
             text-decoration: none;
             transition: color 0.3s;
         }
         a:hover {
-            color: #7dd3fc;
+            color: var(--light-color);
         }
+        a:active {
+            color: #0ea5e9;
+        }
+
+        /* 底部小字 */
         small {
-            color: #94a3b8;
+            color: var(--text-gray);
+        }
+
+        /* 移动端适配：屏幕宽度小于768px时生效 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 20px auto;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .avatar {
+                width: 140px;
+                height: 140px;
+            }
+            section {
+                padding: 18px;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- 星空画布 -->
     <canvas id="starfield"></canvas>
+
+    <!-- 主内容容器 -->
     <div class="container">
         <h1>Song Yang</h1>
         <p class="subtitle">宋杨 | 创业者｜投资者｜AI学习者</p>
 
+        <!-- 头像，加载失败自动隐藏 -->
         <img src="avatar.png" alt="宋杨头像" class="avatar" onerror="this.style.display='none'">
+        
+        <!-- 北京时间展示区域 -->
         <div id="beijing-time"></div>
 
+        <!-- 简介标语 -->
         <p>
             热爱学习 · AI探索者 · GitHub新手<br>
             正在利用 ChatGPT\Grok\等AI 打造自己的数字作品集
         </p>
 
+        <!-- 个人简介模块 -->
         <section>
             <h2>个人简介</h2>
             <p>
@@ -139,12 +216,14 @@
             </p>
         </section>
 
+        <!-- 关于我模块 -->
         <section>
             <h2>关于我</h2>
             <p>刚刚学会了如何用 GitHub 创建个人网站。<br>
                未来会在这里记录学习笔记和做一些小项目。</p>
         </section>
 
+        <!-- 我的目标模块 -->
         <section>
             <h2>我的目标</h2>
             <p>• 坚持每天学习<br>
@@ -152,6 +231,7 @@
                • 逐步建立自己的作品集</p>
         </section>
 
+        <!-- 联系我模块 -->
         <section>
             <h2>联系我</h2>
             <p>🐱 <a href="https://github.com/song18903182386-spec" target="_blank">GitHub</a></p>
@@ -159,39 +239,48 @@
             <p>📧 song18903182386@gmail.com</p>
         </section>
 
+        <!-- 底部版权 -->
         <p><small>由 AI协会 协助创建 · 2026年6月7日</small></p>
     </div>
 
     <script>
-        // 星空背景动画
+        // 星空动画优化代码（限制帧率、提升性能）
         const canvas = document.getElementById('starfield');
         const ctx = canvas.getContext('2d');
         let stars = [];
         let w, h;
+        let lastTime = 0;
+        const FPS = 60;
+        const interval = 1000 / FPS;
 
+        // 重置画布尺寸
         function resize() {
             w = canvas.width = window.innerWidth;
             h = canvas.height = window.innerHeight;
+            createStars();
         }
         window.addEventListener('resize', resize);
         resize();
 
-        // 初始化星星
+        // 生成星星数据
         function createStars() {
             stars = [];
-            for(let i = 0; i < 250; i++) {
+            for(let i = 0; i < 220; i++) {
                 stars.push({
                     x: Math.random() * w,
                     y: Math.random() * h,
-                    r: Math.random() * 1.8 + 0.5,
-                    v: Math.random() * 0.25 + 0.05
+                    r: Math.random() * 1.5 + 0.3,
+                    v: Math.random() * 0.2 + 0.04
                 });
             }
         }
-        createStars();
 
         // 绘制星空
-        function drawStars() {
+        function drawStars(timestamp) {
+            requestAnimationFrame(drawStars);
+            if (timestamp - lastTime < interval) return;
+            lastTime = timestamp;
+
             ctx.clearRect(0, 0, w, h);
             ctx.fillStyle = '#ffffff';
             stars.forEach(star => {
@@ -204,9 +293,8 @@
                     star.x = Math.random() * w;
                 }
             });
-            requestAnimationFrame(drawStars);
         }
-        drawStars();
+        drawStars(0);
 
         // 实时北京时间
         function updateBeijingTime() {
