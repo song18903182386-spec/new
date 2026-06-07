@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>创业笔记 | 宋杨 - 人生记录网站</title>
+
+    <!-- 访客统计 -->
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <style>
+        :root {
+            --main-color: #a78bfa;
+            --light-color: #c4b5fd;
+            --bg-dark: #0f0f1e;
+            --text-main: #f5f3ff;
+            --text-gray: #a8a29e;
+            --card-bg: rgba(255,255,255,0.07);
+            --section-bg: rgba(255,255,255,0.04);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 15, 30, 0.9);
+            backdrop-filter: blur(12px);
+            z-index: 999;
+            padding: 15px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(167,139,250,0.2);
+        }
+        .navbar a {
+            margin: 0 10px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            color: var(--main-color);
+        }
+
+        ::selection {
+            background: var(--main-color);
+            color: var(--bg-dark);
+        }
+
+        #starfield{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            z-index:0;
+            pointer-events:none;
+            background: var(--bg-dark);
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            margin: 0;
+            padding: 0;
+            background:var(--bg-dark);
+            min-height: 100vh;
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 100px auto 60px;
+            padding: 40px;
+            text-align:center;
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.15);
+            position:relative;
+            z-index:1;
+            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeIn {
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        h1 {
+            color: var(--main-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .desc {
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .part {
+            margin-top: 50px;
+        }
+
+        .part-title {
+            color: var(--main-color);
+            font-size: 1.4rem;
+            text-align: left;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 3px solid var(--main-color);
+        }
+
+        .item {
+            background: var(--section-bg);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .item h3 {
+            color: var(--light-color);
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+        }
+
+        .item p {
+            color: var(--text-main);
+            margin: 0 0 10px 0;
+            line-height: 1.7;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(167,139,250,0.2);
+            color: var(--light-color);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+        }
+
+        .footer-note {
+            margin-top: 60px;
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 20px;
+                margin: 100px 15px 60px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .navbar a {
+                margin: 0 6px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 统一导航（和你首页一致） -->
+<div class="navbar">
+    <a href="index.html">首页</a>
+    <a href="business.html">创业笔记</a>
+    <a href="ai.html">AI学习</a>
+    <a href="family.html">来去如风</a>
+    <a href="read.html">阅读思考</a>
+    <a href="travel.html">自驾中国</a>
+    <a href="about.html">关于我</a>
+</div>
+
+<canvas id="starfield"></canvas>
+
+<div class="container">
+
+    <h1>创业笔记</h1>
+    <div class="subtitle">二十四年创业路上的经验、案例与思考</div>
+
+    <div class="desc">
+        创业是一场长期修行。<br>
+        从最初的门头招牌，到LED显示系统、亮化工程、展厅建设与品牌形象工程。<br>
+        二十多年来，我始终工作在广告标识行业一线。<br>
+        这里记录项目案例、行业经验、创业感悟以及一些值得记住的故事。
+    </div>
+
+    <!-- 第一部分 -->
+    <div class="part">
+        <div class="part-title">行业认知</div>
+        <div class="item">
+            <h3>做广告标识行业24年的一些感受</h3>
+            <p>行业变了很多，但客户需要解决问题这一点从未改变。</p>
+            <span class="tag">建设中</span>
+        </div>
+        <div class="item">
+            <h3>为什么很多广告公司做不长</h3>
+            <p>价格竞争并不是唯一原因。现金流、管理能力和客户结构同样重要。</p>
+            <span class="tag">建设中</span>
+        </div>
+        <div class="item">
+            <h3>现金流比利润更重要</h3>
+            <p>创业多年后才真正明白：账面利润不一定是真正赚到的钱。</p>
+            <span class="tag">建设中</span>
+        </div>
+    </div>
+
+    <!-- 第二部分 -->
+    <div class="part">
+        <div class="part-title">项目案例</div>
+        <div class="item">
+            <h3>医院导视系统项目复盘</h3>
+            <p>从设计到施工落地全过程记录。</p>
+            <span class="tag">建设中</span>
+        </div>
+        <div class="item">
+            <h3>校园文化建设项目总结</h3>
+            <p>从需求沟通到现场实施。</p>
+            <span class="tag">建设中</span>
+        </div>
+        <div class="item">
+            <h3>企业展厅建设项目记录</h3>
+            <p>项目执行中的经验与问题总结。</p>
+            <span class="tag">建设中</span>
+        </div>
+    </div>
+
+    <!-- 第三部分 -->
+    <div class="part">
+        <div class="part-title">创业思考</div>
+        <div class="item">
+            <h3>创业最大的敌人不是竞争对手</h3>
+            <p>很多时候，真正限制企业发展的其实是自己。</p>
+            <span class="tag">建设中</span>
+        </div>
+        <div class="item">
+            <h3>一次错误决策带来的教训</h3>
+            <p>那些交过的学费。</p>
+            <span class="tag">建设中</span>
+        </div>
+        <div class="item">
+            <h3>做老板最难的是什么</h3>
+            <p>不仅是赚钱。还有责任。</p>
+            <span class="tag">建设中</span>
+        </div>
+    </div>
+
+    <!-- 第四部分 -->
+    <div class="part">
+        <div class="part-title">行业知识</div>
+        <div class="item">
+            <h3>发光字基础知识</h3>
+            <p>常见类型与适用场景。</p>
+            <span class="tag">建设中</span>
+        </div>
+        <div class="item">
+            <h3>LED显示屏基础知识</h3>
+            <p>规格、应用与常见问题。</p>
+            <span class="tag">建设中</span>
+        </div>
+        <div class="item">
+            <h3>铝单板幕墙简介</h3>
+            <p>材料特点与施工要点。</p>
+            <span class="tag">建设中</span>
+        </div>
+        <div class="item">
+            <h3>导视系统设计原则</h3>
+            <p>一个好的导视系统应该解决什么问题。</p>
+            <span class="tag">建设中</span>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        创业还在继续。<br>
+        新的项目、新的思考和新的经验，将持续记录在这里。<br>
+        更新时间：2026
+    </div>
+
+</div>
+
+<!-- 星空背景 -->
+<script>
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    let w, h;
+
+    function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        createStars();
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function createStars() {
+        stars = [];
+        for(let i=0;i<200;i++){
+            stars.push({x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.5});
+        }
+    }
+
+    function draw(){
+        ctx.clearRect(0,0,w,h);
+        ctx.fillStyle = "#fff";
+        stars.forEach(s=>{
+            ctx.beginPath();
+            ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+            ctx.fill();
+        });
+        requestAnimationFrame(draw);
+    }
+    draw();
+</script>
+
+</body>
+</html>
