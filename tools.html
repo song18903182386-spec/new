@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>AI工具 | 宋杨</title>
+    <style>
+        :root {
+            --main-color: #a78bfa;
+            --light-color: #c4b5fd;
+            --bg-dark: #0f0f1e;
+            --text-main: #f5f3ff;
+            --text-gray: #a8a29e;
+            --card-bg: rgba(255,255,255,0.07);
+            --section-bg: rgba(255,255,255,0.04);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 15, 30, 0.9);
+            backdrop-filter: blur(12px);
+            z-index: 999;
+            padding: 15px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(167,139,250,0.2);
+        }
+        .navbar a {
+            margin: 0 12px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            color: var(--main-color);
+        }
+
+        ::selection {
+            background: var(--main-color);
+            color: var(--bg-dark);
+        }
+
+        #starfield{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            z-index:0;
+            pointer-events:none;
+            background: #0f0f1e;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #0f0f1e;
+            min-height: 100vh;
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 100px auto 40px;
+            padding: 40px;
+            text-align: center;
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.15);
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeIn {
+            to { opacity:1; transform:translateY(0); }
+        }
+
+        h1 {
+            color: var(--main-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .desc {
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+
+        .tool-group {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .tool-group h3 {
+            color: var(--light-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .tool-item {
+            background: var(--section-bg);
+            padding: 16px 20px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            transition: 0.3s;
+            border-left: 3px solid var(--main-color);
+        }
+
+        .tool-item:hover {
+            transform: translateX(6px);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .tool-name {
+            color: var(--text-main);
+            font-size: 1rem;
+            margin: 0 0 4px 0;
+        }
+
+        .tool-desc {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        small {
+            color: var(--text-gray);
+        }
+
+        @media (max-width:768px) {
+            .container {
+                margin:100px 20px 40px;
+                padding:25px;
+            }
+            h1 {
+                font-size:1.8rem;
+            }
+            .navbar a {
+                margin:0 6px;
+                font-size:0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<!-- 导航栏 -->
+<div class="navbar">
+    <a href="index.html">首页</a>
+    <a href="xuexi.html">学习笔记</a>
+    <a href="project.html">项目作品</a>
+    <a href="tools.html">AI工具</a>
+    <a href="links.html">资源导航</a>
+    <a href="about.html">关于我</a>
+</div>
+
+<!-- 星空背景 -->
+<canvas id="starfield"></canvas>
+
+<!-- 内容 -->
+<div class="container">
+    <h1>AI工具中心 / AI Tools</h1>
+    <p class="desc">日常使用的人工智能工具合集，覆盖创作、办公、设计、学习等场景</p>
+
+    <div class="tool-group">
+        <h3>📝 文案与对话类</h3>
+        <div class="tool-item">
+            <p class="tool-name">通用AI对话助手</p>
+            <p class="tool-desc">用于文案撰写、思路梳理、问题解答、Prompt调试，适配工作与学习多种场景。</p>
+        </div>
+        <div class="tool-item">
+            <p class="tool-name">智能文案生成</p>
+            <p class="tool-desc">快速制作宣传文案、广告语、简介、工作总结，提升文字创作效率。</p>
+        </div>
+    </div>
+
+    <div class="tool-group">
+        <h3>🎨 设计与视觉类</h3>
+        <div class="tool-item">
+            <p class="tool-name">AI图像生成工具</p>
+            <p class="tool-desc">根据文字描述生成图片、海报、效果图，辅助品牌视觉与创意设计。</p>
+        </div>
+        <div class="tool-item">
+            <p class="tool-name">智能图片处理</p>
+            <p class="tool-desc">图片修复、裁剪、调色、特效制作，简化后期处理流程。</p>
+        </div>
+    </div>
+
+    <div class="tool-group">
+        <h3>💼 办公与效率类</h3>
+        <div class="tool-item">
+            <p class="tool-name">文档智能处理</p>
+            <p class="tool-desc">文档总结、内容翻译、格式整理，快速处理各类办公文件。</p>
+        </div>
+        <div class="tool-item">
+            <p class="tool-name">智能演示文稿</p>
+            <p class="tool-desc">一键生成PPT大纲、页面内容，辅助商务汇报与分享。</p>
+        </div>
+    </div>
+
+    <div class="tool-group">
+        <h3>📖 学习与拓展类</h3>
+        <div class="tool-item">
+            <p class="tool-name">AI学习辅助</p>
+            <p class="tool-desc">知识点讲解、资料整理、课程辅助，助力持续学习与能力提升。</p>
+        </div>
+    </div>
+
+    <br><br>
+    <small>© 2026 Song Yang<br>Built with GitHub Pages & AI</small>
+</div>
+
+<script>
+    const canvas=document.getElementById('starfield');
+    const ctx=canvas.getContext('2d');
+    let stars=[],meteors=[],w,h,lastTime=0;
+    const FPS=60,interval=1000/FPS;
+
+    function resize(){
+        w=canvas.width=window.innerWidth;
+        h=canvas.height=window.innerHeight;
+        createStars();
+    }
+    window.addEventListener('resize',resize);resize();
+
+    function createStars(){
+        stars=[];
+        for(let i=0;i<220;i++){
+            stars.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+0.3,v:Math.random()*0.2+0.04});
+        }
+    }
+
+    function createMeteor(){
+        if(meteors.length<3){
+            meteors.push({x:Math.random()*w,y:0,len:Math.random()*80+50,vx:Math.random()*6+4,vy:Math.random()*4+3,op:1});
+        }
+    }
+    setInterval(createMeteor,2000);
+
+    function draw(t){
+        requestAnimationFrame(draw);
+        if(t-lastTime<interval)return;lastTime=t;
+        ctx.clearRect(0,0,w,h);
+
+        ctx.fillStyle='#fff';
+        stars.forEach(s=>{
+            ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();
+            s.y+=s.v;if(s.y>h){s.y=0;s.x=Math.random()*w;}
+        });
+
+        ctx.strokeStyle='rgba(167,139,250,1)';ctx.lineWidth=2;
+        meteors.forEach((m,i)=>{
+            ctx.beginPath();ctx.moveTo(m.x,m.y);ctx.lineTo(m.x-m.len,m.y-m.len);ctx.stroke();
+            m.x+=m.vx;m.y+=m.vy;m.op-=0.01;
+            if(m.y>h||m.op<=0)meteors.splice(i,1);
+        });
+    }
+    draw(0);
+</script>
+</body>
+</html>
