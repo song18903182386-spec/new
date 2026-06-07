@@ -2,21 +2,84 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>我的0001网站</title>
+    <title>宋杨的个人主页</title>
     <style>
-        body { font-family: Arial; text-align: center; padding: 50px; background: #f0f8ff; }
-        h1 { color: #2c7a7b; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f0f8ff, #e0f2fe);
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1e88e5;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+        }
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #1e88e5;
+            margin: 20px auto;
+        }
+        section {
+            margin: 40px 0;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+        a {
+            color: #1e88e5;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <h1>👋 你好，我是 [songyang]</h1>
-    <p>这是我用 Grok 帮助创建的第一个个人网站！</p>
-    <p>目前还是新手，正在努力学习中 🚀</p>
-    
-    <hr>
-    <h2>关于我</h2>
-    <p>刚刚学会了 GitHub + GitHub Pages</p>
-    
-    <p><a href="README.md">查看 README</a></p>
+    <div class="container">
+        <h1>👋 你好，我是 Songyang</h1>
+        <p class="subtitle">GitHub 新手 · 正在努力学习中 🚀</p>
+
+        <!-- 头像位置（后面可以换成你的照片） -->
+        <img src="https://via.placeholder.com/150" alt="我的头像" class="avatar">
+
+        <section>
+            <h2>关于我</h2>
+            <p>刚刚学会了如何用 GitHub 创建个人网站。<br>
+               未来会在这里记录学习笔记和做一些小项目。</p>
+        </section>
+
+        <section>
+            <h2>我的目标</h2>
+            <p>• 坚持每天学习<br>
+               • 结合 Grok 做出更多有趣的小工具<br>
+               • 逐步建立自己的作品集</p>
+        </section>
+
+        <section>
+            <h2>联系我</h2>
+            <p>
+                <a href="https://github.com/song18903182386-spec" target="_blank">GitHub</a> | 
+                邮箱：390355614@qq.com song18903182386@gmail.com
+            </p>
+        </section>
+
+        <p><small>由 Grok 协助创建 · 2026年6月</small></p>
+    </div>
 </body>
-</html>add index.html
+</html>
