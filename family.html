@@ -1,0 +1,308 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>来去如风 | 宋杨 - 人生记录网站</title>
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <style>
+        :root {
+            --main-color: #a78bfa;
+            --light-color: #c4b5fd;
+            --bg-dark: #0f0f1e;
+            --text-main: #f5f3ff;
+            --text-gray: #a8a29e;
+            --card-bg: rgba(255,255,255,0.07);
+            --section-bg: rgba(255,255,255,0.04);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 15, 30, 0.9);
+            backdrop-filter: blur(12px);
+            z-index: 999;
+            padding: 15px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(167,139,250,0.2);
+        }
+        .navbar a {
+            margin: 0 10px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            color: var(--main-color);
+        }
+
+        ::selection {
+            background: var(--main-color);
+            color: var(--bg-dark);
+        }
+
+        #starfield{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            z-index:0;
+            pointer-events:none;
+            background: var(--bg-dark);
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            margin: 0;
+            padding: 0;
+            background:var(--bg-dark);
+            min-height: 100vh;
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 100px auto 60px;
+            padding: 40px;
+            text-align:center;
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.15);
+            position:relative;
+            z-index:1;
+            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeIn {
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        h1 {
+            color: var(--main-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .intro {
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 40px;
+            text-align: left;
+            padding: 20px;
+            background: var(--section-bg);
+            border-radius: 16px;
+        }
+
+        .part {
+            margin-top: 50px;
+            text-align: left;
+        }
+
+        .part-title {
+            color: var(--main-color);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 3px solid var(--main-color);
+        }
+
+        .item {
+            background: var(--section-bg);
+            padding: 22px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+        }
+
+        .item h3 {
+            color: var(--light-color);
+            margin: 0 0 12px 0;
+            font-size: 1.1rem;
+        }
+
+        .item p {
+            margin: 0 0 10px 0;
+            line-height: 1.7;
+            color: var(--text-main);
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(167,139,250,0.2);
+            color: var(--light-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+        }
+
+        .footer-note {
+            margin-top: 60px;
+            padding: 20px;
+            color: var(--text-gray);
+            line-height: 1.9;
+            font-size: 1rem;
+            text-align: center;
+            background: var(--section-bg);
+            border-radius: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 20px;
+                margin: 100px 15px 60px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .navbar a {
+                margin: 0 6px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <a href="index.html">首页</a>
+    <a href="business.html">创业笔记</a>
+    <a href="ai.html">AI学习</a>
+    <a href="family.html">来去如风</a>
+    <a href="read.html">阅读思考</a>
+    <a href="travel.html">自驾中国</a>
+    <a href="about.html">关于我</a>
+</div>
+
+<canvas id="starfield"></canvas>
+
+<div class="container">
+    <h1>来去如风</h1>
+    <div class="subtitle">记录家族、亲情、记忆与人生片段</div>
+
+    <div class="intro">
+        有些故事终将远去。<br>
+        有些记忆值得留下。
+    </div>
+
+    <div class="part">
+        <div class="part-title">家族寻根</div>
+        <div class="item">
+            <h3>宋氏家族历史与寻根过程</h3>
+            <p>记录家族溯源、宗族脉络与相关寻访经历。</p>
+            <span class="tag">建设中</span>
+        </div>
+    </div>
+
+    <div class="part">
+        <div class="part-title">父辈故事</div>
+        <div class="item">
+            <h3>父母一代人的经历与记忆</h3>
+            <p>留存长辈的过往岁月、生活点滴与人生故事。</p>
+            <span class="tag">建设中</span>
+        </div>
+    </div>
+
+    <div class="part">
+        <div class="part-title">成长记录</div>
+        <div class="item">
+            <h3>家庭重要时刻与人生阶段</h3>
+            <p>记录一路走来，家庭相伴的各个重要瞬间。</p>
+            <span class="tag">建设中</span>
+        </div>
+    </div>
+
+    <div class="part">
+        <div class="part-title">人生片段</div>
+        <div class="item">
+            <h3>那些值得记住的人和事</h3>
+            <p>散落岁月里，难以忘怀的片段与过往。</p>
+            <span class="tag">建设中</span>
+        </div>
+    </div>
+
+    <div class="part">
+        <div class="part-title">时光印记</div>
+        <div class="item">
+            <h3>照片、文字与回忆</h3>
+            <p>以图文为载体，定格流逝的时光。</p>
+            <span class="tag">建设中</span>
+        </div>
+    </div>
+
+    <div class="part">
+        <div class="part-title">留给未来</div>
+        <div class="item">
+            <h3>留存记忆，回望来路</h3>
+            <p>很多事情会随着时间慢慢淡去。<br>但总有一些记忆，值得被认真保存。</p>
+            <span class="tag">建设中</span>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        有些人留下财富。<br>
+        有些人留下故事。<br>
+        而我希望把走过的路，<br>
+        尽量记录下来。
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    let w, h;
+
+    function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        createStars();
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function createStars() {
+        stars = [];
+        for(let i=0;i<200;i++){
+            stars.push({x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.5});
+        }
+    }
+
+    function draw(){
+        ctx.clearRect(0,0,w,h);
+        ctx.fillStyle = "#fff";
+        stars.forEach(s=>{
+            ctx.beginPath();
+            ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+            ctx.fill();
+        });
+        requestAnimationFrame(draw);
+    }
+    draw();
+</script>
+
+</body>
+</html>
+```
