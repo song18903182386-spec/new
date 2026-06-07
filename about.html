@@ -23,7 +23,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba15, 15, 30, 0.9);
+            background: rgba(15, 15, 30, 0.9);
             backdrop-filter: blur(12px);
             z-index: 999;
             padding: 15px 0;
@@ -106,6 +106,29 @@
             margin-bottom: 30px;
         }
 
+        /* 照片行样式 */
+        .photo-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .photo-row img {
+            width: 220px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .photo-row .wide {
+            height: 280px;
+            width: 360px;
+        }
+
         .quote {
             font-size: 1.1rem;
             line-height: 2;
@@ -170,6 +193,14 @@
                 margin: 0 6px;
                 font-size: 0.85rem;
             }
+            .photo-row img {
+                width: 100%;
+                height: auto;
+            }
+            .photo-row .wide {
+                width: 100%;
+                height: auto;
+            }
         }
     </style>
 </head>
@@ -191,6 +222,13 @@
 <div class="container">
     <h1>关于我</h1>
     <div class="subtitle-en">About Me</div>
+
+    <!-- 这里是新加的三张照片 -->
+    <div class="photo-row">
+        <img src="img/me.jpg" alt="个人照片">
+        <img src="img/work.jpg" alt="工作照片" class="wide">
+        <img src="img/scenery.jpg" alt="风景照片">
+    </div>
 
     <div class="quote">
         一个经营实体企业二十余年的普通创业者。<br>
