@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>这是宋杨的个人主页</title>
+<title>宋杨 | 创业者 · 投资者 · AI学习者</title>
 <style>
     #beijing-time{
     margin:20px 0;
@@ -183,9 +183,7 @@ function draw() {
     requestAnimationFrame(draw);
 }
 draw();function updateBeijingTime() {
-
     const now = new Date();
-
     const options = {
         timeZone: 'Asia/Shanghai',
         year: 'numeric',
@@ -196,22 +194,18 @@ draw();function updateBeijingTime() {
         minute: '2-digit',
         second: '2-digit'
     };
-
     const timeString =
         now.toLocaleString(
             'zh-CN',
             options
         );
-
     document.getElementById(
         'beijing-time'
     ).innerHTML =
         '🇨🇳 北京时间<br>' +
         timeString;
 }
-
 updateBeijingTime();
-
 setInterval(
     updateBeijingTime,
     1000
