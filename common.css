@@ -1,7 +1,15 @@
+/* 载入本地人寿隶书 zhongshou */
+@font-face {
+    font-family: "zhongshou";
+    src: local("zhongshou"), local("中国人寿保险股份有限公司字体");
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
-    /* 标题统一隶书书法字体，正文微软雅黑保证阅读舒适 */
-    --font-title: "LiSu", "STLiShu", serif;
-    --font-text: "Microsoft YaHei", sans-serif;
+    /* 标题优先使用你本机的 zhongshou 隶书，无该字体自动 fallback 备选 */
+    --font-title: "zhongshou", "LiSu", "STLiShu", "STLiti", "KaiTi", serif;
+    --font-text: "Microsoft YaHei", system-ui, sans-serif;
     --main: #a5c0e0;
     --light: #d0def0;
     --bg-page: #060810;
@@ -16,7 +24,6 @@
     --meteor-color: #d0def0;
 }
 
-/* 导航栏 */
 .navbar {
     position: fixed;
     top: 0;
@@ -84,7 +91,6 @@ body {
     scroll-behavior: smooth;
 }
 
-/* 外层主容器，优化通透度，解决画面沉闷 */
 .container {
     max-width: 920px;
     margin: 110px auto 40px;
@@ -109,7 +115,6 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* 大标题隶书 */
 h1 {
     color: var(--main);
     font-size: 2.4rem;
@@ -159,7 +164,6 @@ section:hover {
     box-shadow: 0 6px 20px rgba(0,0,0,0.35), 0 0 12px var(--glow);
 }
 
-/* 板块小标题隶书 */
 h2 {
     color: var(--main);
     font-family: var(--font-title);
