@@ -172,6 +172,31 @@
             line-height: 1.6;
         }
 
+        /* 新增文章卡片网格样式 */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .article-card {
+            padding: 16px 10px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 12px;
+            border: 1px solid rgba(167,139,250,0.15);
+            transition: 0.25s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.1);
+        }
+        .card-tag {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            display: block;
+            margin-bottom: 6px;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
@@ -191,20 +216,23 @@
                 margin: 0 6px;
                 font-size: 0.8rem;
             }
+            .article-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
         }
     </style>
 </head>
 
 <body>
 
-<!-- 重构导航栏 -->
+<!-- 修正后导航栏（完全匹配你指定7个栏目+对应页面） -->
 <div class="navbar">
     <a href="index.html">首页</a>
-    <a href="business.html">创业笔记</a>
-    <a href="ai.html">AI学习</a>
-    <a href="family.html">来去如风</a>
-    <a href="read.html">阅读思考</a>
-    <a href="travel.html">自驾中国</a>
+    <a href="business.html">干中求活</a>
+    <a href="ai.html">爱学习</a>
+    <a href="life.html">来去如风</a>
+    <a href="family.html">家里那点事</a>
+    <a href="travel.html">想自驾全国</a>
     <a href="about.html">关于我</a>
 </div>
 
@@ -261,6 +289,34 @@
             🏛 家族文化与历史记录<br>
             🚗 自驾旅行与生活探索<br>
         </p>
+    </section>
+
+    <!-- 【新增模块：最近写了什么】 放在关注领域、联系方式中间 -->
+    <section>
+        <h2>最近写了什么</h2>
+        <p>这里以后显示最新文章，暂时作为文章入口预留区域</p>
+        <div class="article-grid">
+            <div class="article-card">
+                <span class="card-tag">[最近更新]</span>
+                <a href="business.html">干中求活</a>
+            </div>
+            <div class="article-card">
+                <span class="card-tag">[最近更新]</span>
+                <a href="ai.html">爱学习</a>
+            </div>
+            <div class="article-card">
+                <span class="card-tag">[最近更新]</span>
+                <a href="life.html">来去如风</a>
+            </div>
+            <div class="article-card">
+                <span class="card-tag">[最近更新]</span>
+                <a href="family.html">家里那点事</a>
+            </div>
+            <div class="article-card">
+                <span class="card-tag">[最近更新]</span>
+                <a href="travel.html">想自驾全国</a>
+            </div>
+        </div>
     </section>
 
     <!-- 第五模块 联系方式 -->
@@ -420,6 +476,7 @@ toggleBtn.addEventListener('click', () => {
 <!-- 背景音乐 -->
 <audio id="bgMusic" loop preload="auto">
     <source src="bgm.mp3" type="audio/mpeg">
+
 
 <button id="musicBtn" style="position:fixed;bottom:50px;left:20px;padding:6px 12px;border-radius:12px;background:var(--main-color);color:#fff;border:none;cursor:pointer;z-index:99999;font-size:0.8rem;">
     播放音乐
