@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>创业笔记 | 宋杨 - 人生记录网站</title>
+    <title>干中求活 | 宋杨 | 网络墓志铭</title>
 
     <!-- 访客统计 -->
     <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -19,6 +19,7 @@
             --section-bg: rgba(255,255,255,0.04);
         }
 
+        /* 导航栏重构 */
         .navbar {
             position: fixed;
             top: 0;
@@ -32,7 +33,7 @@
             border-bottom: 1px solid rgba(167,139,250,0.2);
         }
         .navbar a {
-            margin: 0 10px;
+            margin: 0 12px;
             color: var(--text-main);
             font-size: 0.95rem;
             transition: 0.3s;
@@ -45,6 +46,15 @@
         ::selection {
             background: var(--main-color);
             color: var(--bg-dark);
+        }
+
+        #beijing-time{
+            margin:20px 0;
+            font-size:1.1rem;
+            color:var(--light-color);
+            font-weight:bold;
+            text-align:center;
+            line-height:1.8;
         }
 
         #starfield{
@@ -72,7 +82,7 @@
 
         .container {
             max-width: 900px;
-            margin: 100px auto 60px;
+            margin: 100px auto 40px;
             padding: 40px;
             text-align:center;
             background: var(--card-bg);
@@ -96,84 +106,95 @@
 
         h1 {
             color: var(--main-color);
-            font-size: 2.2rem;
+            font-size: 2.6rem;
             margin-bottom: 10px;
         }
 
         .subtitle {
             color: #cbd5e1;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            line-height: 1.6;
         }
 
-        .desc {
-            font-size: 1rem;
-            line-height: 1.9;
-            margin-bottom: 40px;
-            text-align: left;
-        }
-
-        .part {
-            margin-top: 50px;
-        }
-
-        .part-title {
-            color: var(--main-color);
-            font-size: 1.4rem;
-            text-align: left;
-            margin-bottom: 20px;
-            padding-left: 10px;
-            border-left: 3px solid var(--main-color);
-        }
-
-        .item {
+        section {
+            margin-top: 30px;
+            padding: 25px;
             background: var(--section-bg);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: left;
-            margin-bottom: 15px;
+            border-radius: 18px;
+            transition: all 0.3s ease;
         }
 
-        .item h3 {
+        section:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.08);
+        }
+
+        h2 {
+            color: var(--main-color);
+            margin-top: 0;
+        }
+
+        p {
+            line-height: 1.9;
+            font-size: 1rem;
+        }
+
+        a {
+            color: var(--main-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
             color: var(--light-color);
-            margin: 0 0 8px 0;
-            font-size: 1.1rem;
         }
 
-        .item p {
-            color: var(--text-main);
-            margin: 0 0 10px 0;
-            line-height: 1.7;
-        }
-
-        .tag {
-            display: inline-block;
-            background: rgba(167,139,250,0.2);
-            color: var(--light-color);
-            padding: 3px 8px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-        }
-
-        .footer-note {
-            margin-top: 60px;
+        small {
             color: var(--text-gray);
-            line-height: 1.8;
-            font-size: 0.95rem;
-            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* 文章卡片网格样式 */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .article-card {
+            padding: 16px 10px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 12px;
+            border: 1px solid rgba(167,139,250,0.15);
+            transition: 0.25s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.1);
+        }
+        .card-tag {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            display: block;
+            margin-bottom: 6px;
         }
 
         @media (max-width: 768px) {
             .container {
-                padding: 25px 20px;
-                margin: 100px 15px 60px;
+                padding: 20px;
+                margin: 100px 20px 40px;
             }
             h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+            section {
+                padding: 18px;
             }
             .navbar a {
                 margin: 0 6px;
-                font-size: 0.85rem;
+                font-size: 0.8rem;
+            }
+            .article-grid {
+                grid-template-columns: repeat(2,1fr);
             }
         }
     </style>
@@ -181,131 +202,74 @@
 
 <body>
 
-<!-- 统一导航（和你首页一致） -->
+<!-- 导航栏 -->
 <div class="navbar">
     <a href="index.html">首页</a>
-    <a href="business.html">创业笔记</a>
-    <a href="ai.html">AI学习</a>
-    <a href="family.html">来去如风</a>
-    <a href="read.html">阅读思考</a>
-    <a href="travel.html">自驾中国</a>
+    <a href="business.html">干中求活</a>
+    <a href="ai.html">爱学习</a>
+    <a href="life.html">来去如风</a>
+    <a href="family.html">家里那点事</a>
+    <a href="travel.html">想自驾全国</a>
     <a href="about.html">关于我</a>
 </div>
 
 <canvas id="starfield"></canvas>
 
 <div class="container">
+    <h1>干中求活</h1>
+    <p class="subtitle">二十余年广告、装饰、亮化工程从业记录</p>
 
-    <h1>创业笔记</h1>
-    <div class="subtitle">二十四年创业路上的经验、案例与思考</div>
+    <div id="beijing-time"></div>
 
-    <div class="desc">
-        创业是一场长期修行。<br>
-        从最初的门头招牌，到LED显示系统、亮化工程、展厅建设与品牌形象工程。<br>
-        二十多年来，我始终工作在广告标识行业一线。<br>
-        这里记录项目案例、行业经验、创业感悟以及一些值得记住的故事。
-    </div>
+    <section>
+        <h2>栏目说明</h2>
+        <p>记录这些年做广告、装饰、亮化工程中的经历。
+        <br>赚钱的时候有。
+        <br>踩坑的时候更多。
+        <br>以后慢慢写，工地、甲方、供货、回款、施工难题全都如实记下来。
+        </p>
+    </section>
 
-    <!-- 第一部分 -->
-    <div class="part">
-        <div class="part-title">行业认知</div>
-        <div class="item">
-            <h3>做广告标识行业24年的一些感受</h3>
-            <p>行业变了很多，但客户需要解决问题这一点从未改变。</p>
-            <span class="tag">建设中</span>
-        </div>
-        <div class="item">
-            <h3>为什么很多广告公司做不长</h3>
-            <p>价格竞争并不是唯一原因。现金流、管理能力和客户结构同样重要。</p>
-            <span class="tag">建设中</span>
-        </div>
-        <div class="item">
-            <h3>现金流比利润更重要</h3>
-            <p>创业多年后才真正明白：账面利润不一定是真正赚到的钱。</p>
-            <span class="tag">建设中</span>
-        </div>
-    </div>
+    <section>
+        <h2>文章列表（待更新）</h2>
+        <p>目前暂无发布内容，后续在这里更新全部行业经历随笔</p>
+    </section>
 
-    <!-- 第二部分 -->
-    <div class="part">
-        <div class="part-title">项目案例</div>
-        <div class="item">
-            <h3>医院导视系统项目复盘</h3>
-            <p>从设计到施工落地全过程记录。</p>
-            <span class="tag">建设中</span>
+    <section>
+        <h2>返回栏目入口</h2>
+        <div class="article-grid">
+            <div class="article-card">
+                <span class="card-tag">[首页]</span>
+                <a href="index.html">回到首页</a>
+            </div>
+            <div class="article-card">
+                <span class="card-tag">[其他栏目]</span>
+                <a href="ai.html">爱学习</a>
+            </div>
+            <div class="article-card">
+                <span class="card-tag">[其他栏目]</span>
+                <a href="life.html">来去如风</a>
+            </div>
         </div>
-        <div class="item">
-            <h3>校园文化建设项目总结</h3>
-            <p>从需求沟通到现场实施。</p>
-            <span class="tag">建设中</span>
-        </div>
-        <div class="item">
-            <h3>企业展厅建设项目记录</h3>
-            <p>项目执行中的经验与问题总结。</p>
-            <span class="tag">建设中</span>
-        </div>
-    </div>
+    </section>
 
-    <!-- 第三部分 -->
-    <div class="part">
-        <div class="part-title">创业思考</div>
-        <div class="item">
-            <h3>创业最大的敌人不是竞争对手</h3>
-            <p>很多时候，真正限制企业发展的其实是自己。</p>
-            <span class="tag">建设中</span>
-        </div>
-        <div class="item">
-            <h3>一次错误决策带来的教训</h3>
-            <p>那些交过的学费。</p>
-            <span class="tag">建设中</span>
-        </div>
-        <div class="item">
-            <h3>做老板最难的是什么</h3>
-            <p>不仅是赚钱。还有责任。</p>
-            <span class="tag">建设中</span>
-        </div>
-    </div>
-
-    <!-- 第四部分 -->
-    <div class="part">
-        <div class="part-title">行业知识</div>
-        <div class="item">
-            <h3>发光字基础知识</h3>
-            <p>常见类型与适用场景。</p>
-            <span class="tag">建设中</span>
-        </div>
-        <div class="item">
-            <h3>LED显示屏基础知识</h3>
-            <p>规格、应用与常见问题。</p>
-            <span class="tag">建设中</span>
-        </div>
-        <div class="item">
-            <h3>铝单板幕墙简介</h3>
-            <p>材料特点与施工要点。</p>
-            <span class="tag">建设中</span>
-        </div>
-        <div class="item">
-            <h3>导视系统设计原则</h3>
-            <p>一个好的导视系统应该解决什么问题。</p>
-            <span class="tag">建设中</span>
-        </div>
-    </div>
-
-    <!-- 底部 -->
-    <div class="footer-note">
-        创业还在继续。<br>
-        新的项目、新的思考和新的经验，将持续记录在这里。<br>
-        更新时间：2026
-    </div>
-
+    <p>
+        <small>
+        © 2026 宋杨 · 人生记录网站
+        </small>
+    </p>
 </div>
 
-<!-- 星空背景 -->
+<!-- 星空与时间 JS -->
 <script>
     const canvas = document.getElementById('starfield');
     const ctx = canvas.getContext('2d');
     let stars = [];
+    let meteors = [];
     let w, h;
+    let lastTime = 0;
+    const FPS = 60;
+    const interval = 1000 / FPS;
 
     function resize() {
         w = canvas.width = window.innerWidth;
@@ -317,22 +281,141 @@
 
     function createStars() {
         stars = [];
-        for(let i=0;i<200;i++){
-            stars.push({x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.5});
+        for(let i = 0; i < 220; i++) {
+            stars.push({
+                x: Math.random() * w,
+                y: Math.random() * h,
+                r: Math.random() * 1.5 + 0.3,
+                v: Math.random() * 0.2 + 0.04
+            });
         }
     }
 
-    function draw(){
-        ctx.clearRect(0,0,w,h);
-        ctx.fillStyle = "#fff";
-        stars.forEach(s=>{
-            ctx.beginPath();
-            ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-            ctx.fill();
-        });
-        requestAnimationFrame(draw);
+    function createMeteor() {
+        if(meteors.length < 3) {
+            meteors.push({
+                x: Math.random() * w,
+                y: 0,
+                len: Math.random() * 80 + 50,
+                vx: Math.random() * 6 + 4,
+                vy: Math.random() * 4 + 3,
+                op: 1
+            });
+        }
     }
-    draw();
+    setInterval(createMeteor, 2000);
+
+    function drawStars(timestamp) {
+        requestAnimationFrame(drawStars);
+        if (timestamp - lastTime < interval) return;
+        lastTime = timestamp;
+
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = '#ffffff';
+        stars.forEach(star => {
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+            ctx.fill();
+            star.y += star.v;
+            if(star.y > h) {
+                star.y = 0;
+                star.x = Math.random() * w;
+            }
+        });
+
+        ctx.strokeStyle = 'rgba(167, 139, 250, 1)';
+        ctx.lineWidth = 2;
+        meteors.forEach((meteor, index) => {
+            ctx.beginPath();
+            ctx.moveTo(meteor.x, meteor.y);
+            ctx.lineTo(meteor.x - meteor.len, meteor.y - meteor.len);
+            ctx.stroke();
+            meteor.x += meteor.vx;
+            meteor.y += meteor.vy;
+            meteor.op -= 0.01;
+            if(meteor.y > h || meteor.op <= 0) {
+                meteors.splice(index, 1);
+            }
+        });
+    }
+    drawStars(0);
+
+    function updateBeijingTime() {
+        const now = new Date();
+        const options = {
+            timeZone: 'Asia/Shanghai',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            weekday: 'long',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        };
+        const timeString = now.toLocaleString('zh-CN', options);
+        document.getElementById('beijing-time').innerHTML = `🛰️ 中国标准时间 CST<br>${timeString}`;
+    }
+    updateBeijingTime();
+    setInterval(updateBeijingTime, 1000);
+</script>
+
+<!-- 主题切换 -->
+<button id="toggleTheme" style="position:fixed;bottom:20px;right:20px;padding:10px 16px;border-radius:50px;background:var(--main-color);color:#fff;border:none;cursor:pointer;z-index:99999;">切换风格</button>
+<script>
+const toggleBtn = document.getElementById('toggleTheme');
+const root = document.documentElement;
+function setTheme(theme) {
+  if (theme === 'blue') {
+    root.style.setProperty('--main-color', '#60a5fa');
+    root.style.setProperty('--light-color', '#93c5fd');
+    root.style.setProperty('--bg-dark', '#0f172a');
+    root.style.setProperty('--text-main', '#f1f5f9');
+    root.style.setProperty('--text-gray', '#94a3b8');
+    root.style.setProperty('--card-bg', 'rgba(255,255,255,0.05)');
+    root.style.setProperty('--section-bg', 'rgba(255,255,255,0.03)');
+  } else {
+    root.style.setProperty('--main-color', '#a78bfa');
+    root.style.setProperty('--light-color', '#c4b5fd');
+    root.style.setProperty('--bg-dark', '#0f0f1e');
+    root.style.setProperty('--text-main', '#f5f3ff');
+    root.style.setProperty('--text-gray', '#a8a29e');
+    root.style.setProperty('--card-bg', 'rgba(255,255,255,0.07)');
+    root.style.setProperty('--section-bg', 'rgba(255,255,255,0.04)');
+  }
+}
+setTheme(localStorage.getItem('theme') || 'purple');
+toggleBtn.addEventListener('click', () => {
+  const t = localStorage.getItem('theme') === 'blue' ? 'purple' : 'blue';
+  localStorage.setItem('theme', t);
+  setTheme(t);
+});
+</script>
+
+<!-- 访问统计 -->
+<div style="position:fixed;bottom:20px;left:20px;color:var(--text-main);font-size:0.9rem;z-index:99999;">
+    总访问量：<span id="busuanzi_value_site_pv"></span> &nbsp; 访客数：<span id="busuanzi_value_site_uv"></span>
+</div>
+
+<!-- 背景音乐 -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="bgm.mp3" type="audio/mpeg">
+
+
+<button id="musicBtn" style="position:fixed;bottom:50px;left:20px;padding:6px 12px;border-radius:12px;background:var(--main-color);color:#fff;border:none;cursor:pointer;z-index:99999;font-size:0.8rem;">
+    播放音乐
+</button>
+<script>
+const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+musicBtn.addEventListener('click', function() {
+    if (bgMusic.paused) {
+        bgMusic.play();
+        musicBtn.textContent = "暂停音乐";
+    } else {
+        bgMusic.pause();
+        musicBtn.textContent = "播放音乐";
+    }
+});
 </script>
 
 </body>
