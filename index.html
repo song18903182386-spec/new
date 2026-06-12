@@ -140,7 +140,7 @@ function refreshBirthDay(){
     const now = new Date();
     const diffTime = now - birthDate;
     const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    document.getElementById("birthTimer").innerHTML = `🎂 自1979年02月04日出生至今：${totalDays} 天`;
+    document.getElementById("birthTimer").innerHTML = `🎂 已降临这个世界：${totalDays} 天`;
 }
 refreshBirthDay();
 setInterval(refreshBirthDay, 1000);
