@@ -156,5 +156,13 @@ function updateBeijingTime(){
 updateBeijingTime();
 setInterval(updateBeijingTime,1000);
 </script>
+<button id="backTop" style="position:fixed;bottom:20px;right:90px;padding:8px 14px;border-radius:40px;background:var(--main);color:#fff;border:none;z-index:99999;display:none;">回到顶部</button>
+<script>
+const backBtn = document.getElementById('backTop');
+window.addEventListener('scroll',()=>{
+    backBtn.style.display = window.scrollY>300 ? 'block' : 'none';
+})
+backBtn.onclick = ()=> window.scrollTo({top:0,behavior:'smooth'});
+</script>
 </body>
 </html>
