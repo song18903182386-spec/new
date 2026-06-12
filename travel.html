@@ -1,11 +1,11 @@
-```html
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>自驾中国 | 宋杨 - 人生记录网站</title>
+    <title>想自驾全国 | 宋杨 | 网络墓志铭</title>
 
+    <!-- 访客统计 -->
     <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
     <style>
@@ -19,6 +19,7 @@
             --section-bg: rgba(255,255,255,0.04);
         }
 
+        /* 导航栏重构 */
         .navbar {
             position: fixed;
             top: 0;
@@ -32,7 +33,7 @@
             border-bottom: 1px solid rgba(167,139,250,0.2);
         }
         .navbar a {
-            margin: 0 10px;
+            margin: 0 12px;
             color: var(--text-main);
             font-size: 0.95rem;
             transition: 0.3s;
@@ -45,6 +46,15 @@
         ::selection {
             background: var(--main-color);
             color: var(--bg-dark);
+        }
+
+        #beijing-time{
+            margin:20px 0;
+            font-size:1.1rem;
+            color:var(--light-color);
+            font-weight:bold;
+            text-align:center;
+            line-height:1.8;
         }
 
         #starfield{
@@ -72,7 +82,7 @@
 
         .container {
             max-width: 900px;
-            margin: 100px auto 60px;
+            margin: 100px auto 40px;
             padding: 40px;
             text-align:center;
             background: var(--card-bg);
@@ -96,89 +106,95 @@
 
         h1 {
             color: var(--main-color);
-            font-size: 2.2rem;
+            font-size: 2.6rem;
             margin-bottom: 10px;
         }
 
         .subtitle {
             color: #cbd5e1;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            line-height: 1.6;
         }
 
-        .intro {
-            font-size: 1rem;
-            line-height: 1.9;
-            margin-bottom: 40px;
-            text-align: left;
-            padding: 20px;
+        section {
+            margin-top: 30px;
+            padding: 25px;
             background: var(--section-bg);
-            border-radius: 16px;
+            border-radius: 18px;
+            transition: all 0.3s ease;
         }
 
-        .part {
-            margin-top: 50px;
-            text-align: left;
+        section:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.08);
         }
 
-        .part-title {
+        h2 {
             color: var(--main-color);
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            padding-left: 10px;
-            border-left: 3px solid var(--main-color);
+            margin-top: 0;
         }
 
-        .item {
-            background: var(--section-bg);
-            padding: 22px;
-            border-radius: 12px;
-            margin-bottom: 18px;
-        }
-
-        .item h3 {
-            color: var(--light-color);
-            margin: 0 0 12px 0;
-            font-size: 1.1rem;
-        }
-
-        .item p {
-            margin: 0 0 10px 0;
-            line-height: 1.7;
-            color: var(--text-main);
-        }
-
-        .tag {
-            display: inline-block;
-            background: rgba(167,139,250,0.2);
-            color: var(--light-color);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-        }
-
-        .footer-note {
-            margin-top: 60px;
-            padding: 20px;
-            color: var(--text-gray);
+        p {
             line-height: 1.9;
             font-size: 1rem;
-            text-align: center;
-            background: var(--section-bg);
-            border-radius: 16px;
+        }
+
+        a {
+            color: var(--main-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: var(--light-color);
+        }
+
+        small {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* 文章卡片网格样式 */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .article-card {
+            padding: 16px 10px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 12px;
+            border: 1px solid rgba(167,139,250,0.15);
+            transition: 0.25s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.1);
+        }
+        .card-tag {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            display: block;
+            margin-bottom: 6px;
         }
 
         @media (max-width: 768px) {
             .container {
-                padding: 25px 20px;
-                margin: 100px 15px 60px;
+                padding: 20px;
+                margin: 100px 20px 40px;
             }
             h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+            section {
+                padding: 18px;
             }
             .navbar a {
                 margin: 0 6px;
-                font-size: 0.85rem;
+                font-size: 0.8rem;
+            }
+            .article-grid {
+                grid-template-columns: repeat(2,1fr);
             }
         }
     </style>
@@ -186,85 +202,73 @@
 
 <body>
 
+<!-- 导航栏 -->
 <div class="navbar">
     <a href="index.html">首页</a>
-    <a href="business.html">创业笔记</a>
-    <a href="ai.html">AI学习</a>
-    <a href="family.html">来去如风</a>
-    <a href="read.html">阅读思考</a>
-    <a href="travel.html">自驾中国</a>
+    <a href="business.html">干中求活</a>
+    <a href="ai.html">爱学习</a>
+    <a href="life.html">来去如风</a>
+    <a href="family.html">家里那点事</a>
+    <a href="travel.html">想自驾全国</a>
     <a href="about.html">关于我</a>
 </div>
 
 <canvas id="starfield"></canvas>
 
 <div class="container">
-    <h1>自驾中国</h1>
-    <div class="subtitle">暂未启程。但梦想已经出发。</div>
+    <h1>想自驾全国</h1>
+    <p class="subtitle">自驾路线规划、沿途风景与旅途随笔记录</p>
 
-    <div class="intro">
-        很多年前，<br>
-        总觉得以后有时间再去看看这个世界。<br>
-        后来慢慢发现：<br>
-        时间并不会自动出现。
-    </div>
+    <div id="beijing-time"></div>
 
-    <div class="part">
-        <div class="part-title">为什么想自驾中国</div>
-        <div class="item">
-            <h3>出行初衷</h3>
-            <p>想看看不同的风景。想认识不同的人。想离开熟悉的环境。也想重新认识自己。</p>
+    <section>
+        <h2>栏目说明</h2>
+        <p>一直想开车走遍国内各地。
+        <br>目前时间有限，先规划路线。
+        <br>以后跑一处写一处沿途见闻。
+        </p>
+    </section>
+
+    <section>
+        <h2>文章列表（待更新）</h2>
+        <p>目前暂无发布内容，后续在这里记录路线攻略、沿途实拍、出行感受</p>
+    </section>
+
+    <section>
+        <h2>返回栏目入口</h2>
+        <div class="article-grid">
+            <div class="article-card">
+                <span class="card-tag">[首页]</span>
+                <a href="index.html">回到首页</a>
+            </div>
+            <div class="article-card">
+                <span class="card-tag">[其他栏目]</span>
+                <a href="business.html">干中求活</a>
+            </div>
+            <div class="article-card">
+                <span class="card-tag">[其他栏目]</span>
+                <a href="family.html">家里那点事</a>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="part">
-        <div class="part-title">计划路线</div>
-        <div class="item">
-            <h3>行程路线规划</h3>
-            <span class="tag">建设中</span>
-        </div>
-    </div>
-
-    <div class="part">
-        <div class="part-title">车辆与装备</div>
-        <div class="item">
-            <h3>出行车辆及户外装备</h3>
-            <span class="tag">建设中</span>
-        </div>
-    </div>
-
-    <div class="part">
-        <div class="part-title">目的地清单</div>
-        <div class="item">
-            <h3>计划前往地区</h3>
-            <p>河北、山东、山西、内蒙古、新疆、西藏、云南、海南……</p>
-            <span class="tag">建设中</span>
-        </div>
-    </div>
-
-    <div class="part">
-        <div class="part-title">路上的故事</div>
-        <div class="item">
-            <h3>旅途见闻与经历</h3>
-            <p>未来更新。</p>
-            <span class="tag">建设中</span>
-        </div>
-    </div>
-
-    <div class="footer-note">
-        人生不是赶路。<br>
-        而是在路上。<br><br>
-        期待有一天，<br>
-        驾驶自己的车，<br>
-        慢慢走遍中国。
-    </div>
+    <p>
+        <small>
+        © 2026 宋杨 · 人生记录网站
+        </small>
+    </p>
 </div>
 
+<!-- 星空与时间 JS -->
 <script>
     const canvas = document.getElementById('starfield');
     const ctx = canvas.getContext('2d');
     let stars = [];
+    let meteors = [];
     let w, h;
+    let lastTime = 0;
+    const FPS = 60;
+    const interval = 1000 / FPS;
 
     function resize() {
         w = canvas.width = window.innerWidth;
@@ -276,24 +280,142 @@
 
     function createStars() {
         stars = [];
-        for(let i=0;i<200;i++){
-            stars.push({x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.5});
+        for(let i = 0; i < 220; i++) {
+            stars.push({
+                x: Math.random() * w,
+                y: Math.random() * h,
+                r: Math.random() * 1.5 + 0.3,
+                v: Math.random() * 0.2 + 0.04
+            });
         }
     }
 
-    function draw(){
-        ctx.clearRect(0,0,w,h);
-        ctx.fillStyle = "#fff";
-        stars.forEach(s=>{
-            ctx.beginPath();
-            ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-            ctx.fill();
-        });
-        requestAnimationFrame(draw);
+    function createMeteor() {
+        if(meteors.length < 3) {
+            meteors.push({
+                x: Math.random() * w,
+                y: 0,
+                len: Math.random() * 80 + 50,
+                vx: Math.random() * 6 + 4,
+                vy: Math.random() * 4 + 3,
+                op: 1
+            });
+        }
     }
-    draw();
+    setInterval(createMeteor, 2000);
+
+    function drawStars(timestamp) {
+        requestAnimationFrame(drawStars);
+        if (timestamp - lastTime < interval) return;
+        lastTime = timestamp;
+
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = '#ffffff';
+        stars.forEach(star => {
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+            ctx.fill();
+            star.y += star.v;
+            if(star.y > h) {
+                star.y = 0;
+                star.x = Math.random() * w;
+            }
+        });
+
+        ctx.strokeStyle = 'rgba(167, 139, 250, 1)';
+        ctx.lineWidth = 2;
+        meteors.forEach((meteor, index) => {
+            ctx.beginPath();
+            ctx.moveTo(meteor.x, meteor.y);
+            ctx.lineTo(meteor.x - meteor.len, meteor.y - meteor.len);
+            ctx.stroke();
+            meteor.x += meteor.vx;
+            meteor.y += meteor.vy;
+            meteor.op -= 0.01;
+            if(meteor.y > h || meteor.op <= 0) {
+                meteors.splice(index, 1);
+            }
+        });
+    }
+    drawStars(0);
+
+    function updateBeijingTime() {
+        const now = new Date();
+        const options = {
+            timeZone: 'Asia/Shanghai',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            weekday: 'long',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        };
+        const timeString = now.toLocaleString('zh-CN', options);
+        document.getElementById('beijing-time').innerHTML = `🛰️ 中国标准时间 CST<br>${timeString}`;
+    }
+    updateBeijingTime();
+    setInterval(updateBeijingTime, 1000);
+</script>
+
+<!-- 主题切换 -->
+<button id="toggleTheme" style="position:fixed;bottom:20px;right:20px;padding:10px 16px;border-radius:50px;background:var(--main-color);color:#fff;border:none;cursor:pointer;z-index:99999;">切换风格</button>
+<script>
+const toggleBtn = document.getElementById('toggleTheme');
+const root = document.documentElement;
+function setTheme(theme) {
+  if (theme === 'blue') {
+    root.style.setProperty('--main-color', '#60a5fa');
+    root.style.setProperty('--light-color', '#93c5fd');
+    root.style.setProperty('--bg-dark', '#0f172a');
+    root.style.setProperty('--text-main', '#f1f5f9');
+    root.style.setProperty('--text-gray', '#94a3b8');
+    root.style.setProperty('--card-bg', 'rgba(255,255,255,0.05)');
+    root.style.setProperty('--section-bg', 'rgba(255,255,255,0.03)');
+  } else {
+    root.style.setProperty('--main-color', '#a78bfa');
+    root.style.setProperty('--light-color', '#c4b5fd');
+    root.style.setProperty('--bg-dark', '#0f0f1e');
+    root.style.setProperty('--text-main', '#f5f3ff');
+    root.style.setProperty('--text-gray', '#a8a29e');
+    root.style.setProperty('--card-bg', 'rgba(255,255,255,0.07)');
+    root.style.setProperty('--section-bg', 'rgba(255,255,255,0.04)');
+  }
+}
+setTheme(localStorage.getItem('theme') || 'purple');
+toggleBtn.addEventListener('click', () => {
+  const t = localStorage.getItem('theme') === 'blue' ? 'purple' : 'blue';
+  localStorage.setItem('theme', t);
+  setTheme(t);
+});
+</script>
+
+<!-- 访问统计 -->
+<div style="position:fixed;bottom:20px;left:20px;color:var(--text-main);font-size:0.9rem;z-index:99999;">
+    总访问量：<span id="busuanzi_value_site_pv"></span> &nbsp; 访客数：<span id="busuanzi_value_site_uv"></span>
+</div>
+
+<!-- 背景音乐 -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="bgm.mp3" type="audio/mpeg">
+
+
+<button id="musicBtn" style="position:fixed;bottom:50px;left:20px;padding:6px 12px;border-radius:12px;background:var(--main-color);color:#fff;border:none;cursor:pointer;z-index:99999;font-size:0.8rem;">
+    播放音乐
+</button>
+<script>
+const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+musicBtn.addEventListener('click', function() {
+    if (bgMusic.paused) {
+        bgMusic.play();
+        musicBtn.textContent = "暂停音乐";
+    } else {
+        bgMusic.pause();
+        musicBtn.textContent = "播放音乐";
+    }
+});
 </script>
 
 </body>
 </html>
-```
