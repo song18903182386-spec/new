@@ -34,8 +34,8 @@ function createMeteor() {
             x: Math.random() * w,
             y: 0,
             len: Math.random() * 80 + 50,
-            vx: Math.random() * 6 + 4,
-            vy: Math.random() * 4 + 3,
+            vx: Math.random() * 2 + 2,
+            vy: Math.random() * 2 + 3,
             op: 1
         });
     }
@@ -48,7 +48,8 @@ function drawStars(timestamp) {
     lastTime = timestamp;
 
     ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = '#ffffff';
+    const meteorColor = getComputedStyle(document.documentElement).getPropertyValue('--meteor-color').trim();
+    ctx.fillStyle = "#ffffff";
     stars.forEach(star => {
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
@@ -60,19 +61,19 @@ function drawStars(timestamp) {
         }
     });
 
-    ctx.strokeStyle = 'rgba(167, 139, 250, 1)';
+    ctx.strokeStyle = meteorColor;
     ctx.lineWidth = 2;
     meteors.forEach((meteor, index) => {
         ctx.beginPath();
         ctx.moveTo(meteor.x, meteor.y);
-        ctx.lineTo(meteor.x - meteor.len, meteor.y - meteor.len);
+        ctx.lineTo(meteor.x - meteor.len, meteor.y + meteor.len);
+        ctx.globalAlpha = meteor.op;
         ctx.stroke();
+        ctx.globalAlpha = 1;
         meteor.x += meteor.vx;
         meteor.y += meteor.vy;
-        meteor.op -= 0.01;
-        if(meteor.y > h || meteor.op <= 0) {
-            meteors.splice(index, 1);
-        }
+        meteor.op -= 0.008;
+        if(meteor.op <= 0 || meteor.y > h) meteors.splice(index, 1);
     });
 }
 drawStars(0);
@@ -101,7 +102,6 @@ setInterval(updateBeijingTime, 1000);
 const toggleBtn = document.getElementById('toggleTheme');
 const root = document.documentElement;
 function setTheme(theme) {
-  const root = document.documentElement;
   const starDom = document.getElementById("starfield");
   const btnDom = document.getElementById("toggleTheme");
 
@@ -146,6 +146,14 @@ function setTheme(theme) {
     if (starDom) starDom.style.background = root.getPropertyValue("--star-bg");
     if (btnDom) btnDom.style.background = root.getPropertyValue("--btn-color");
   }
+}
+setTheme(localStorage.getItem('theme') || 'purple');
+if(toggleBtn){
+    toggleBtn.addEventListener('click', () => {
+      const t = localStorage.getItem('theme') === 'blue' ? 'purple' : 'blue';
+      localStorage.setItem('theme', t);
+      setTheme(t);
+    });
 }
 
 // 背景音乐控制
