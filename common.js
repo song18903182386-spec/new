@@ -1,7 +1,7 @@
-// 全局提前定义root，修复切换失效bug
+// 全局root提前定义
 const root = document.documentElement;
 const canvas = document.getElementById('starfield');
-const ctx = canvas.getContext('2d');
+const ctx = canvas?.getContext('2d');
 let stars = [];
 let meteors = [];
 let w, h;
@@ -10,6 +10,7 @@ const FPS = 60;
 const interval = 1000 / FPS;
 
 function resize() {
+    if(!canvas) return;
     w = canvas.width = window.innerWidth;
     h = canvas.height = window.innerHeight;
     createStars();
@@ -45,7 +46,7 @@ setInterval(createMeteor, 2000);
 
 function drawStars(timestamp) {
     requestAnimationFrame(drawStars);
-    if (timestamp - lastTime < interval) return;
+    if (timestamp - lastTime < interval || !ctx) return;
     lastTime = timestamp;
 
     ctx.clearRect(0, 0, w, h);
@@ -99,14 +100,14 @@ function updateBeijingTime() {
 updateBeijingTime();
 setInterval(updateBeijingTime, 1000);
 
-// 主题切换逻辑
+// ========== 核心修复：主题切换 ==========
 const toggleBtn = document.getElementById('toggleTheme');
+
 function setTheme(theme) {
   const starDom = document.getElementById("starfield");
   const btnDom = document.getElementById("toggleTheme");
 
   if (theme === "blue") {
-    /* B主题：纯黑冷蓝 粗黑体硬核风 */
     root.style.setProperty("--font-title", "system-ui, -apple-system, Microsoft YaHei, sans-serif");
     root.style.setProperty("--font-text", "system-ui, -apple-system, Microsoft YaHei, sans-serif");
     root.style.setProperty("--main", "#38bdf8");
@@ -126,7 +127,6 @@ function setTheme(theme) {
     if (starDom) starDom.style.background = root.getPropertyValue("--star-bg");
     if (btnDom) btnDom.style.background = root.getPropertyValue("--btn-color");
   } else {
-    /* A主题：默认紫调宋体文艺风 */
     root.style.setProperty("--font-title", "SimSun, STSong, serif");
     root.style.setProperty("--font-text", "SimSun, STSong, serif");
     root.style.setProperty("--main", "#a78bfa");
@@ -147,25 +147,28 @@ function setTheme(theme) {
     if (btnDom) btnDom.style.background = root.getPropertyValue("--btn-color");
   }
 }
-// 读取本地存储主题并初始化
-let currentTheme = localStorage.getItem('theme');
-if(currentTheme !== 'blue') currentTheme = 'purple';
-setTheme(currentTheme);
 
-// 绑定点击事件
+// 初始化读取本地存储
+let savedTheme = localStorage.getItem('theme');
+if(savedTheme !== "blue") savedTheme = "purple";
+setTheme(savedTheme);
+
+// 点击事件强制绑定，增加控制台打印排查
 if(toggleBtn){
-    toggleBtn.addEventListener('click', () => {
-      const nextTheme = localStorage.getItem('theme') === 'blue' ? 'purple' : 'blue';
-      localStorage.setItem('theme', nextTheme);
-      setTheme(nextTheme);
-    });
+    toggleBtn.onclick = function(){
+        console.log("点击切换按钮触发");
+        let now = localStorage.getItem('theme');
+        let next = now === "blue" ? "purple" : "blue";
+        localStorage.setItem('theme', next);
+        setTheme(next);
+    }
 }
 
-// 背景音乐控制
+// 背景音乐
 const bgMusic = document.getElementById('bgMusic');
 const musicBtn = document.getElementById('musicBtn');
 if(bgMusic && musicBtn){
-    musicBtn.addEventListener('click', function() {
+    musicBtn.onclick = function() {
         if (bgMusic.paused) {
             bgMusic.play();
             musicBtn.textContent = "暂停音乐";
@@ -173,5 +176,5 @@ if(bgMusic && musicBtn){
             bgMusic.pause();
             musicBtn.textContent = "播放音乐";
         }
-    });
+    };
 }
