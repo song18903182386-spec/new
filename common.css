@@ -1,4 +1,5 @@
 :root {
+    /* 默认紫色主题 */
     --main-color: #a78bfa;
     --light-color: #c4b5fd;
     --bg-dark: #0f0f1e;
@@ -6,6 +7,10 @@
     --text-gray: #a8a29e;
     --card-bg: rgba(255,255,255,0.07);
     --section-bg: rgba(255,255,255,0.04);
+    --glow-color: rgba(167,139,250,0.6);
+    --border-gradient-1: rgba(167,139,250,0.22);
+    --border-gradient-2: rgba(96,165,250,0.12);
+    --star-line: rgba(167, 139, 250, 1);
 }
 
 /* 导航栏美化：渐变底+中间发光分割线 */
@@ -20,7 +25,7 @@
     padding: 15px 0;
     text-align: center;
     border-bottom: 1px solid transparent;
-    background-image: linear-gradient(rgba(15, 15, 30, 0.9),rgba(15, 15, 30, 0.9)),linear-gradient(90deg, transparent, rgba(167,139,250,0.35), transparent);
+    background-image: linear-gradient(rgba(15, 15, 30, 0.9),rgba(15, 15, 30, 0.9)),linear-gradient(90deg, transparent, var(--light-color), transparent);
     background-origin: border-box;
     background-clip: padding-box, border-box;
 }
@@ -33,7 +38,7 @@
 }
 .navbar a:hover {
     color: var(--main-color);
-    text-shadow: 0 0 10px rgba(167,139,250,0.6);
+    text-shadow: 0 0 10px var(--glow-color);
 }
 
 ::selection {
@@ -84,9 +89,9 @@ body {
     background: var(--card-bg);
     backdrop-filter: blur(18px);
     border-radius: 28px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(167,139,250,0.08);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px var(--glow-color);
     border: 1px solid transparent;
-    background-image: linear-gradient(var(--card-bg), var(--card-bg)), linear-gradient(135deg, rgba(167,139,250,0.22), rgba(96,165,250,0.12));
+    background-image: linear-gradient(var(--card-bg), var(--card-bg)), linear-gradient(135deg, var(--border-gradient-1), var(--border-gradient-2));
     background-origin: border-box;
     background-clip: padding-box, border-box;
     position:relative;
@@ -125,15 +130,15 @@ h1 {
     display: block;
     object-fit: cover;
     border: 6px solid var(--main-color);
-    box-shadow: 0 0 30px rgba(167,139,250,0.7);
+    box-shadow: 0 0 30px var(--glow-color);
     background: rgba(167,139,250,0.2);
     animation: glow 3s infinite ease-in-out;
 }
 
 @keyframes glow {
-    0% { box-shadow: 0 0 25px rgba(167,139,250,0.6); }
-    50% { box-shadow: 0 0 40px rgba(167,139,250,1); }
-    100% { box-shadow: 0 0 25px rgba(167,139,250,0.6); }
+    0% { box-shadow: 0 0 25px var(--glow-color); }
+    50% { box-shadow: 0 0 40px var(--glow-color); }
+    100% { box-shadow: 0 0 25px var(--glow-color); }
 }
 
 /* 内容板块：hover紫光边框+悬浮阴影 */
@@ -149,8 +154,8 @@ section {
 section:hover {
     transform: translateY(-6px);
     background: rgba(255,255,255,0.08);
-    border-color: rgba(167,139,250,0.25);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 18px rgba(167,139,250,0.07);
+    border-color: var(--main-color);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 18px var(--glow-color);
 }
 
 h2 {
@@ -171,7 +176,7 @@ a {
 }
 a:hover {
     color: var(--light-color);
-    text-shadow: 0 0 6px rgba(167,139,250,0.5);
+    text-shadow: 0 0 6px var(--glow-color);
 }
 
 small {
@@ -190,14 +195,14 @@ small {
     padding: 18px 12px;
     background: rgba(255,255,255,0.05);
     border-radius: 14px;
-    border: 1px solid rgba(167,139,250,0.12);
+    border: 1px solid var(--glow-color);
     transition: 0.28s ease;
 }
 .article-card:hover {
     transform: translateY(-6px) scale(1.02);
     background: rgba(255,255,255,0.11);
-    border-color: rgba(167,139,250,0.3);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.35), 0 0 22px rgba(167,139,250,0.1);
+    border-color: var(--main-color);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35), 0 0 22px var(--glow-color);
 }
 .card-tag {
     font-size: 0.75rem;
