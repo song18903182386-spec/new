@@ -8,7 +8,7 @@
     --section-bg: rgba(255,255,255,0.04);
 }
 
-/* 导航栏重构 */
+/* 导航栏美化：渐变底+中间发光分割线 */
 .navbar {
     position: fixed;
     top: 0;
@@ -19,7 +19,10 @@
     z-index: 999;
     padding: 15px 0;
     text-align: center;
-    border-bottom: 1px solid rgba(167,139,250,0.2);
+    border-bottom: 1px solid transparent;
+    background-image: linear-gradient(rgba(15, 15, 30, 0.9),rgba(15, 15, 30, 0.9)),linear-gradient(90deg, transparent, rgba(167,139,250,0.35), transparent);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
 }
 .navbar a {
     margin: 0 12px;
@@ -30,6 +33,7 @@
 }
 .navbar a:hover {
     color: var(--main-color);
+    text-shadow: 0 0 10px rgba(167,139,250,0.6);
 }
 
 ::selection {
@@ -44,8 +48,10 @@
     font-weight:bold;
     text-align:center;
     line-height:1.8;
+    letter-spacing: 1px;
 }
 
+/* 星空背景：柔和深空渐变替代纯黑 */
 #starfield{
     position:fixed;
     top:0;
@@ -54,7 +60,7 @@
     height:100%;
     z-index:0;
     pointer-events:none;
-    background: var(--bg-dark);
+    background: linear-gradient(160deg, #070714 0%, #0f0f1e 50%, #13132b 100%);
 }
 
 body {
@@ -69,16 +75,20 @@ body {
     transition: all 0.3s ease;
 }
 
+/* 主容器卡片：渐变发光边框+多层柔光阴影 */
 .container {
     max-width: 900px;
     margin: 100px auto 40px;
     padding: 40px;
     text-align:center;
     background: var(--card-bg);
-    backdrop-filter: blur(15px);
-    border-radius: 25px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(18px);
+    border-radius: 28px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(167,139,250,0.08);
+    border: 1px solid transparent;
+    background-image: linear-gradient(var(--card-bg), var(--card-bg)), linear-gradient(135deg, rgba(167,139,250,0.22), rgba(96,165,250,0.12));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
     position:relative;
     z-index:1;
     animation: fadeIn 1s ease forwards;
@@ -97,12 +107,14 @@ h1 {
     color: var(--main-color);
     font-size: 2.6rem;
     margin-bottom: 10px;
+    letter-spacing: 2px;
 }
 
 .subtitle {
     color: #cbd5e1;
     font-size: 1.2rem;
     line-height: 1.6;
+    letter-spacing: 0.5px;
 }
 
 .avatar {
@@ -124,22 +136,27 @@ h1 {
     100% { box-shadow: 0 0 25px rgba(167,139,250,0.6); }
 }
 
+/* 内容板块：hover紫光边框+悬浮阴影 */
 section {
     margin-top: 30px;
     padding: 25px;
     background: var(--section-bg);
     border-radius: 18px;
+    border: 1px solid rgba(255,255,0.06);
     transition: all 0.3s ease;
 }
 
 section:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     background: rgba(255,255,255,0.08);
+    border-color: rgba(167,139,250,0.25);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 18px rgba(167,139,250,0.07);
 }
 
 h2 {
     color: var(--main-color);
     margin-top: 0;
+    letter-spacing: 1px;
 }
 
 p {
@@ -154,6 +171,7 @@ a {
 }
 a:hover {
     color: var(--light-color);
+    text-shadow: 0 0 6px rgba(167,139,250,0.5);
 }
 
 small {
@@ -161,7 +179,7 @@ small {
     line-height: 1.6;
 }
 
-/* 文章卡片网格样式 */
+/* 栏目卡片：hover轻微放大+光晕 */
 .article-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -169,15 +187,17 @@ small {
     margin-top: 20px;
 }
 .article-card {
-    padding: 16px 10px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 12px;
-    border: 1px solid rgba(167,139,250,0.15);
-    transition: 0.25s ease;
+    padding: 18px 12px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 14px;
+    border: 1px solid rgba(167,139,250,0.12);
+    transition: 0.28s ease;
 }
 .article-card:hover {
-    transform: translateY(-4px);
-    background: rgba(255,255,255,0.1);
+    transform: translateY(-6px) scale(1.02);
+    background: rgba(255,255,255,0.11);
+    border-color: rgba(167,139,250,0.3);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35), 0 0 22px rgba(167,139,250,0.1);
 }
 .card-tag {
     font-size: 0.75rem;
@@ -186,6 +206,7 @@ small {
     margin-bottom: 6px;
 }
 
+/* 手机端自适应优化 */
 @media (max-width: 768px) {
     .container {
         padding: 20px;
