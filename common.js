@@ -101,31 +101,51 @@ setInterval(updateBeijingTime, 1000);
 const toggleBtn = document.getElementById('toggleTheme');
 const root = document.documentElement;
 function setTheme(theme) {
-  if (theme === 'blue') {
-    root.style.setProperty('--main-color', '#60a5fa');
-    root.style.setProperty('--light-color', '#93c5fd');
-    root.style.setProperty('--bg-dark', '#0f172a');
-    root.style.setProperty('--text-main', '#f1f5f9');
-    root.style.setProperty('--text-gray', '#94a3b8');
-    root.style.setProperty('--card-bg', 'rgba(255,255,255,0.05)');
-    root.style.setProperty('--section-bg', 'rgba(255,255,255,0.03)');
+  const root = document.documentElement;
+  const starDom = document.getElementById("starfield");
+  const btnDom = document.getElementById("toggleTheme");
+
+  if (theme === "blue") {
+    /* B主题：纯黑冷蓝 粗黑体硬核风 */
+    root.style.setProperty("--font-title", "system-ui, -apple-system, Microsoft YaHei, sans-serif");
+    root.style.setProperty("--font-text", "system-ui, -apple-system, Microsoft YaHei, sans-serif");
+    root.style.setProperty("--main", "#38bdf8");
+    root.style.setProperty("--light", "#bae6fd");
+    root.style.setProperty("--bg-page", "#030712");
+    root.style.setProperty("--star-bg", "linear-gradient(160deg, #000000 0%, #030712 60%, #050c1f 100%)");
+    root.style.setProperty("--text-normal", "#f0f9ff");
+    root.style.setProperty("--text-gray", "#94a3b8");
+    root.style.setProperty("--card-alpha", "rgba(255,255,255,0.04)");
+    root.style.setProperty("--block-alpha", "rgba(255,255,255,0.02)");
+    root.style.setProperty("--glow", "rgba(56,189,248,0.6)");
+    root.style.setProperty("--grad1", "rgba(56,189,248,0.22)");
+    root.style.setProperty("--grad2", "rgba(129,140,248,0.08)");
+    root.style.setProperty("--meteor-color", "#bae6fd");
+    root.style.setProperty("--btn-color", "#38bdf8");
+
+    if (starDom) starDom.style.background = root.getPropertyValue("--star-bg");
+    if (btnDom) btnDom.style.background = root.getPropertyValue("--btn-color");
   } else {
-    root.style.setProperty('--main-color', '#a78bfa');
-    root.style.setProperty('--light-color', '#c4b5fd');
-    root.style.setProperty('--bg-dark', '#0f0f1e');
-    root.style.setProperty('--text-main', '#f5f3ff');
-    root.style.setProperty('--text-gray', '#a8a29e');
-    root.style.setProperty('--card-bg', 'rgba(255,255,255,0.07)');
-    root.style.setProperty('--section-bg', 'rgba(255,255,255,0.04)');
+    /* A主题：默认紫调宋体文艺风 */
+    root.style.setProperty("--font-title", "SimSun, STSong, serif");
+    root.style.setProperty("--font-text", "SimSun, STSong, serif");
+    root.style.setProperty("--main", "#a78bfa");
+    root.style.setProperty("--light", "#e9d5ff");
+    root.style.setProperty("--bg-page", "#0f0f1e");
+    root.style.setProperty("--star-bg", "linear-gradient(160deg, #070714 0%, #0f0f1e 50%, #181833 100%)");
+    root.style.setProperty("--text-normal", "#f5f3ff");
+    root.style.setProperty("--text-gray", "#c4b5fd");
+    root.style.setProperty("--card-alpha", "rgba(255,255,255,0.09)");
+    root.style.setProperty("--block-alpha", "rgba(255,255,255,0.05)");
+    root.style.setProperty("--glow", "rgba(167,139,250,0.75)");
+    root.style.setProperty("--grad1", "rgba(167,139,250,0.28)");
+    root.style.setProperty("--grad2", "rgba(129,140,248,0.15)");
+    root.style.setProperty("--meteor-color", "#e9d5ff");
+    root.style.setProperty("--btn-color", "#a78bfa");
+
+    if (starDom) starDom.style.background = root.getPropertyValue("--star-bg");
+    if (btnDom) btnDom.style.background = root.getPropertyValue("--btn-color");
   }
-}
-setTheme(localStorage.getItem('theme') || 'purple');
-if(toggleBtn){
-    toggleBtn.addEventListener('click', () => {
-      const t = localStorage.getItem('theme') === 'blue' ? 'purple' : 'blue';
-      localStorage.setItem('theme', t);
-      setTheme(t);
-    });
 }
 
 // 背景音乐控制
