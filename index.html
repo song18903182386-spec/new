@@ -31,7 +31,10 @@
     </p>
     <p>为谋生在广告装饰亮化行业卖命二十余年<br>记录工作、学习、成败、家庭、人生、退休准备中</p>
 
+    <!-- 北京时间 -->
     <div id="beijing-time"></div>
+    <!-- 新增出生天数计时器 -->
+    <div id="birthTimer" style="margin:16px 0; font-family:var(--font-title); color:var(--light); font-size:1.08rem; letter-spacing:1px;"></div>
 
     <section>
         <h2>关于这个网站</h2>
@@ -112,18 +115,46 @@
         © 2026 宋杨 · 人生记录网站
         </small>
     </p>
+    <!-- 访客统计放到卡片底部 -->
+    <p style="margin-top:10px; font-size:0.9rem; color:var(--text-gray);">
+        总访问量：<span id="busuanzi_value_site_pv"></span> &nbsp; 访客数：<span id="busuanzi_value_site_uv"></span>
+    </p>
 </div>
-<button id="toggleTheme" style="position:fixed;bottom:20px;right:20px;padding:10px 16px;border-radius:50px;background:var(--main-color);color:#fff;border:none;cursor:pointer;z-index:99999;">切换风格</button>
-    总访问量：<span id="busuanzi_value_site_pv"></span> &nbsp; 访客数：<span id="busuanzi_value_site_uv"></span>
-</div>
+
+<button id="toggleTheme" style="position:fixed;bottom:20px;right:20px;padding:10px 16px;border-radius:50px;background:var(--main);color:#fff;border:none;cursor:pointer;z-index:99999;" onmouseover="this.style.boxShadow='0 0 16px var(--glow)'" onmouseout="this.style.boxShadow='none'">切换风格</button>
 
 <audio id="bgMusic" loop preload="auto">
     <source src="bgm.mp3" type="audio/mpeg">
 
-<button id="musicBtn" style="position:fixed;bottom:50px;left:20px;padding:6px 12px;border-radius:12px;background:var(--main-color);color:#fff;border:none;cursor:pointer;z-index:99999;font-size:0.8rem;">
+
+<button id="musicBtn" style="position:fixed;bottom:50px;left:20px;padding:6px 12px;border-radius:12px;background:var(--main);color:#fff;border:none;cursor:pointer;z-index:99999;font-size:0.8rem;">
     播放音乐
 </button>
 
 <script src="common.js"></script>
+<!-- 出生天数计时脚本 -->
+<script>
+// 出生日期 1979-02-04
+const birthDate = new Date("1979-02-04 00:00:00");
+function refreshBirthDay(){
+    const now = new Date();
+    const diffTime = now - birthDate;
+    const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    document.getElementById("birthTimer").innerHTML = `🎂 自1979年02月04日出生至今：${totalDays} 天`;
+}
+refreshBirthDay();
+setInterval(refreshBirthDay, 1000);
+
+// 北京时间渲染
+function updateBeijingTime(){
+    const dom = document.getElementById('beijing-time');
+    if(!dom) return;
+    const now = new Date();
+    const opt = {timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',weekday:'long',hour:'2-digit',minute:'2-digit',second:'2-digit'};
+    dom.innerHTML = `🛰️ 中国标准时间 CST<br>${now.toLocaleString('zh-CN',opt)}`;
+}
+updateBeijingTime();
+setInterval(updateBeijingTime,1000);
+</script>
 </body>
 </html>
