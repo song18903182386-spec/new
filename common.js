@@ -1,4 +1,5 @@
-// 星空画布
+// 全局提前定义root，修复切换失效bug
+const root = document.documentElement;
 const canvas = document.getElementById('starfield');
 const ctx = canvas.getContext('2d');
 let stars = [];
@@ -48,7 +49,7 @@ function drawStars(timestamp) {
     lastTime = timestamp;
 
     ctx.clearRect(0, 0, w, h);
-    const meteorColor = getComputedStyle(document.documentElement).getPropertyValue('--meteor-color').trim();
+    const meteorColor = getComputedStyle(root).getPropertyValue('--meteor-color').trim();
     ctx.fillStyle = "#ffffff";
     stars.forEach(star => {
         ctx.beginPath();
@@ -98,9 +99,8 @@ function updateBeijingTime() {
 updateBeijingTime();
 setInterval(updateBeijingTime, 1000);
 
-// 主题切换
+// 主题切换逻辑
 const toggleBtn = document.getElementById('toggleTheme');
-const root = document.documentElement;
 function setTheme(theme) {
   const starDom = document.getElementById("starfield");
   const btnDom = document.getElementById("toggleTheme");
@@ -147,12 +147,17 @@ function setTheme(theme) {
     if (btnDom) btnDom.style.background = root.getPropertyValue("--btn-color");
   }
 }
-setTheme(localStorage.getItem('theme') || 'purple');
+// 读取本地存储主题并初始化
+let currentTheme = localStorage.getItem('theme');
+if(currentTheme !== 'blue') currentTheme = 'purple';
+setTheme(currentTheme);
+
+// 绑定点击事件
 if(toggleBtn){
     toggleBtn.addEventListener('click', () => {
-      const t = localStorage.getItem('theme') === 'blue' ? 'purple' : 'blue';
-      localStorage.setItem('theme', t);
-      setTheme(t);
+      const nextTheme = localStorage.getItem('theme') === 'blue' ? 'purple' : 'blue';
+      localStorage.setItem('theme', nextTheme);
+      setTheme(nextTheme);
     });
 }
 
