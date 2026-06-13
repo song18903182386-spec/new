@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>宋杨 | 网络墓志铭</title>
-    <!-- 访客统计 -->
-    <script async src="https://busuanzi.ibruce.info/busuanzi.pure.mini.js"></script>
-    <!-- 抽离公共样式css/common.css 不变 -->
+    <!-- 样式放head，统计脚本移到页面末尾 -->
     <link rel="stylesheet" href="css/common.css">
 </head>
 
@@ -116,23 +114,22 @@
         © 2026 宋杨 · 人生记录网站
         </small>
     </p>
-    <!-- 访客统计放到卡片底部 -->
+    <!-- 访客统计 -->
     <p style="margin-top:10px; font-size:0.9rem; color:var(--text-gray);">
         总访问量：<span id="busuanzi_value_site_pv"></span> &nbsp; 访客数：<span id="busuanzi_value_site_uv"></span>
     </p>
 </div>
 
-<!-- 修复音频闭合标签，已删除音乐按钮、删除切换风格按钮 -->
+<!-- 完整音频标签，无语法错误 -->
 <audio id="bgMusic" loop preload="auto">
     <source src="bgm.mp3" type="audio/mpeg">
 
 
-<!-- 抽离公共脚本js/common.js 不变 -->
+<!-- 公共星空、时间脚本 -->
 <script src="js/common.js"></script>
 
-<!-- 出生天数计时脚本 -->
+<!-- 出生天数计时 -->
 <script>
-// 出生日期 1979-02-04
 const birthDate = new Date("1979-02-04 00:00:00");
 function refreshBirthDay(){
     const now = new Date();
@@ -143,7 +140,6 @@ function refreshBirthDay(){
 refreshBirthDay();
 setInterval(refreshBirthDay, 1000);
 
-// 北京时间渲染
 function updateBeijingTime(){
     const dom = document.getElementById('beijing-time');
     if(!dom) return;
@@ -155,6 +151,7 @@ updateBeijingTime();
 setInterval(updateBeijingTime,1000);
 </script>
 
+<!-- 回到顶部 -->
 <button id="backTop" style="position:fixed;bottom:20px;right:90px;padding:8px 14px;border-radius:40px;background:var(--main);color:#fff;border:none;z-index:99999;display:none;">回到顶部</button>
 <script>
 const backBtn = document.getElementById('backTop');
@@ -164,7 +161,7 @@ window.addEventListener('scroll',()=>{
 backBtn.onclick = ()=> window.scrollTo({top:0,behavior:'smooth'});
 </script>
 
-<!-- BGM自动播放逻辑，无按钮控制 -->
+<!-- 背景音乐点击切换 -->
 <script>
 const bgMusic = document.getElementById('bgMusic');
 let audioInit = false;
@@ -173,13 +170,12 @@ document.body.addEventListener('click', () => {
         bgMusic.play();
         audioInit = true;
     } else {
-        if (bgMusic.paused) {
-            bgMusic.play();
-        } else {
-            bgMusic.pause();
-        }
+        bgMusic.paused ? bgMusic.play() : bgMusic.pause();
     }
 });
 </script>
+
+<!-- 统计脚本放页面最底部，DOM全部加载完成再执行，必出数字 -->
+<script async src="https://busuanzi.ibruce.info/busuanzi.pure.mini.js"></script>
 </body>
 </html>
