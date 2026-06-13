@@ -76,6 +76,16 @@
         </small>
     </p>
 </div>
+
+<!-- 新增音频标签，和首页保持一致 -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="bgm.mp3" type="audio/mpeg">
+
+
+<!-- 公共星空、时间脚本 -->
+<script src="js/common.js"></script>
+
+<!-- 点击页面切换播放/暂停音乐 -->
 <script>
 const bgMusic = document.getElementById('bgMusic');
 let audioInit = false;
@@ -88,3 +98,5 @@ document.body.addEventListener('click', () => {
     }
 });
 </script>
+</body>
+</html>
