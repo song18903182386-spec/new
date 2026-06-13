@@ -1,8 +1,8 @@
 :root {
-    /* 标题字体：楷体首选，端正柔和，全平台通用 */
-    --font-title: "KaiTi", "STKaiti", "SimSun", serif;
-    /* 正文字体：微软雅黑，清晰易读 */
-    --font-text: "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+    /* 标题：微软雅黑 清晰粗亮 */
+    --font-title: "Microsoft YaHei", system-ui, sans-serif;
+    /* 正文：楷体 柔和阅读 */
+    --font-text: "KaiTi", "STKaiti", "SimSun", serif;
 
     --main: #a5c0e0;
     --light: #d0def0;
@@ -36,12 +36,12 @@
 .navbar a {
     margin: 0 14px;
     color: var(--text-normal);
-    font-size: 0.88rem;
+    font-size: 0.98rem;
     font-family: var(--font-title);
     transition: 0.3s ease;
     text-decoration: none;
     letter-spacing: 0.5px;
-    font-weight: 400;
+    font-weight: 500;
 }
 .navbar a:hover {
     color: var(--main);
@@ -55,9 +55,9 @@
 
 #beijing-time{
     margin:20px 0;
-    font-size:1rem;
+    font-size:1.15rem;
     color:var(--light);
-    font-weight:400;
+    font-weight:500;
     font-family: var(--font-title);
     text-align:center;
     line-height:1.8;
@@ -112,19 +112,19 @@ body {
 
 h1 {
     color: var(--main);
-    font-size: 2.1rem;
+    font-size: 2.6rem;
     font-family: var(--font-title);
     margin-bottom: 8px;
     letter-spacing: 1.2px;
-    font-weight: 500;
+    font-weight: 600;
 }
 .subtitle {
     color: var(--text-gray);
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     font-family: var(--font-title);
     line-height: 1.55;
     letter-spacing: 0.3px;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .avatar {
@@ -165,12 +165,12 @@ h2 {
     font-family: var(--font-title);
     margin-top: 0;
     letter-spacing: 0.8px;
-    font-weight: 500;
-    font-size:1.35rem;
+    font-weight: 600;
+    font-size:1.5rem;
 }
 p {
-    line-height: 1.82;
-    font-size: 0.98rem;
+    line-height: 1.85;
+    font-size: 1.02rem;
     font-family: var(--font-text);
     font-weight:400;
 }
@@ -187,7 +187,7 @@ small {
     color: var(--text-gray);
     line-height: 1.6;
     font-family: var(--font-text);
-    font-size:0.92rem;
+    font-size:0.98rem;
 }
 
 .article-grid {
@@ -210,25 +210,28 @@ small {
     box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 0 16px var(--glow);
 }
 .card-tag {
-    font-size: 0.7rem;
+    font-size: 0.78rem;
     color: var(--text-gray);
     font-family: var(--font-text);
     display: block;
     margin-bottom: 5px;
 }
 
-/* 移动端适配 字号同步缩小 */
+/* 移动端适配 */
 @media (max-width: 768px) {
     .container {
         padding: 18px;
         margin: 90px 16px 30px;
     }
-    h1 { font-size: 1.75rem; }
-    h2 { font-size:1.2rem; }
+    h1 { font-size: 2.1rem; }
+    h2 { font-size:1.3rem; }
     .avatar { width: 130px; height: 130px; }
     section { padding: 16px; }
-    .navbar a { margin: 0 5px; font-size: 0.78rem; }
+    .navbar a { margin: 0 5px; font-size: 0.88rem; }
     .article-grid { grid-template-columns: repeat(2,1fr); }
-    #beijing-time { font-size:0.95rem; }
-    .subtitle { font-size:0.98rem; }
+    #beijing-time { font-size:1.05rem; }
+    .subtitle { font-size:1.05rem; }
+    p { font-size:0.98rem; }
+    small { font-size:0.92rem; }
+    .card-tag { font-size:0.75rem; }
 }
