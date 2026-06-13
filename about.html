@@ -69,23 +69,23 @@
             </div>
         </div>
     </section>
-
     <p>
         <small>
         © 2026 宋杨 · 人生记录网站
         </small>
     </p>
+    <!-- 新增统计数字标签 -->
+    <p style="margin-top:16px;font-size:1rem;color:var(--text-gray);">
+总访问量：<span id="busuanzi_value_site_pv"></span> &nbsp;
+访客数：<span id="busuanzi_value_site_uv"></span>
+</p>
 </div>
 
-<!-- 修复：补全audio闭合标签 -->
 <audio id="bgMusic" loop preload="auto">
-    <source src="bgm.mp3" type="audio/mpeg">
+    <source src="bgm.mp3" type="audio/mpeg>
 
 
-<!-- 公共星空、北京时间脚本，DOM全部渲染完毕再加载 -->
 <script src="js/common.js"></script>
-
-<!-- 页面点击切换播放暂停音乐 -->
 <script>
 const bgMusic = document.getElementById('bgMusic');
 let audioInit = false;
@@ -98,5 +98,3 @@ document.body.addEventListener('click', () => {
     }
 });
 </script>
-</body>
-</html>
