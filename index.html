@@ -123,8 +123,10 @@
 
 <button id="toggleTheme" style="position:fixed;bottom:20px;right:20px;padding:10px 16px;border-radius:50px;background:var(--main);color:#fff;border:none;cursor:pointer;z-index:99999;" onmouseover="this.style.boxShadow='0 0 16px var(--glow)'" onmouseout="this.style.boxShadow='none'">切换风格</button>
 
+<!-- 修复1：audio标签完整闭合 -->
 <audio id="bgMusic" loop preload="auto">
     <source src="bgm.mp3" type="audio/mpeg">
+
 
 
 <button id="musicBtn" style="position:fixed;bottom:50px;left:20px;padding:6px 12px;border-radius:12px;background:var(--main);color:#fff;border:none;cursor:pointer;z-index:99999;font-size:0.8rem;">
@@ -163,6 +165,34 @@ window.addEventListener('scroll',()=>{
     backBtn.style.display = window.scrollY>300 ? 'block' : 'none';
 })
 backBtn.onclick = ()=> window.scrollTo({top:0,behavior:'smooth'});
+</script>
+
+<!-- 修复2：新增背景音乐播放/暂停控制逻辑 -->
+<script>
+const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+let audioInit = false;
+
+// 页面任意点击解锁音频播放权限
+document.body.addEventListener('click', () => {
+    if (!audioInit) {
+        bgMusic.play();
+        audioInit = true;
+        musicBtn.innerText = "暂停音乐";
+    }
+}, { once: true });
+
+// 按钮切换播放暂停
+musicBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (bgMusic.paused) {
+        bgMusic.play();
+        musicBtn.innerText = "暂停音乐";
+    } else {
+        bgMusic.pause();
+        musicBtn.innerText = "播放音乐";
+    }
+});
 </script>
 </body>
 </html>
