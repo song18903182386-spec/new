@@ -1,15 +1,11 @@
-# Decap CMS 核心配置 - 适配仓库 song18903182386-spec/new
 backend:
   name: github
-  repo: song18903182386-spec/new  # 固定为你当前仓库名
-  branch: main                     # 你的主分支（默认main）
-  # 后续完成GitHub OAuth后，再补充client_id，暂时留空即可
-
-# 图片目录：适配你仓库的 img 文件夹（关键修正）
+  repo: song18903182386-spec/new
+  branch: main
+  client_id: 0v231ijb962I7FIPo9dr
+  client_secret: 712a94fa1316262e8a411f290ee79c2a4696784d
 media_folder: "img/uploads"
 public_folder: "/img/uploads"
-
-# 5个文章分类（和你网站导航一一对应）
 collections:
   - name: "business"
     label: "干中求活"
@@ -20,7 +16,6 @@ collections:
       - {label: "发布日期", name: "date", widget: "datetime", format: "YYYY-MM-DD"}
       - {label: "封面图", name: "cover", widget: "image", required: false}
       - {label: "正文内容", name: "body", widget: "markdown"}
-
   - name: "ai"
     label: "爱学习"
     folder: "posts/ai"
@@ -30,16 +25,15 @@ collections:
       - {label: "发布日期", name: "date", widget: "datetime", format: "YYYY-MM-DD"}
       - {label: "封面图", name: "cover", widget: "image", required: false}
       - {label: "正文内容", name: "body", widget: "markdown"}
-
   - name: "life"
     label: "来去如风"
     folder: "posts/life"
     create: true
     fields:
-      - {label: "标题", name: "date", widget: "datetime", format: "YYYY-MM-DD"}
+      - {label: "标题", name: "title", widget: "string"}
+      - {label: "发布日期", name: "date", widget: "datetime", format: "YYYY-MM-DD"}
       - {label: "封面图", name: "cover", widget: "image", required: false}
       - {label: "正文内容", name: "body", widget: "markdown"}
-
   - name: "family"
     label: "家里那点事"
     folder: "posts/family"
@@ -49,7 +43,6 @@ collections:
       - {label: "发布日期", name: "date", widget: "datetime", format: "YYYY-MM-DD"}
       - {label: "封面图", name: "cover", widget: "image", required: false}
       - {label: "正文内容", name: "body", widget: "markdown"}
-
   - name: "travel"
     label: "想自驾全国"
     folder: "posts/travel"
@@ -58,4 +51,3 @@ collections:
       - {label: "标题", name: "title", widget: "string"}
       - {label: "发布日期", name: "date", widget: "datetime", format: "YYYY-MM-DD"}
       - {label: "封面图", name: "cover", widget: "image", required: false}
-      - {label: "正文内容", name: "body", widget: "markdown"}
