@@ -1,8 +1,7 @@
-/* 已移除本地人寿隶书字体定义 */
 :root {
-    /* 标题字体：楷体优先，系统通用，美观耐看 */
+    /* 标题字体：楷体首选，端正柔和，全平台通用 */
     --font-title: "KaiTi", "STKaiti", "SimSun", serif;
-    /* 正文字体：微软雅黑，阅读舒适 */
+    /* 正文字体：微软雅黑，清晰易读 */
     --font-text: "Microsoft YaHei", system-ui, -apple-system, sans-serif;
 
     --main: #a5c0e0;
@@ -37,11 +36,12 @@
 .navbar a {
     margin: 0 14px;
     color: var(--text-normal);
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     font-family: var(--font-title);
     transition: 0.3s ease;
     text-decoration: none;
     letter-spacing: 0.5px;
+    font-weight: 400;
 }
 .navbar a:hover {
     color: var(--main);
@@ -54,13 +54,13 @@
 }
 
 #beijing-time{
-    margin:22px 0;
-    font-size:1.08rem;
+    margin:20px 0;
+    font-size:1rem;
     color:var(--light);
-    font-weight:500;
+    font-weight:400;
     font-family: var(--font-title);
     text-align:center;
-    line-height:1.85;
+    line-height:1.8;
     letter-spacing: 1px;
 }
 
@@ -112,18 +112,19 @@ body {
 
 h1 {
     color: var(--main);
-    font-size: 2.4rem;
+    font-size: 2.1rem;
     font-family: var(--font-title);
     margin-bottom: 8px;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
     font-weight: 500;
 }
 .subtitle {
     color: var(--text-gray);
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-family: var(--font-title);
-    line-height: 1.6;
+    line-height: 1.55;
     letter-spacing: 0.3px;
+    font-weight: 400;
 }
 
 .avatar {
@@ -165,11 +166,13 @@ h2 {
     margin-top: 0;
     letter-spacing: 0.8px;
     font-weight: 500;
+    font-size:1.35rem;
 }
 p {
-    line-height: 1.85;
-    font-size: 1rem;
+    line-height: 1.82;
+    font-size: 0.98rem;
     font-family: var(--font-text);
+    font-weight:400;
 }
 a {
     color: var(--main);
@@ -184,6 +187,7 @@ small {
     color: var(--text-gray);
     line-height: 1.6;
     font-family: var(--font-text);
+    font-size:0.92rem;
 }
 
 .article-grid {
@@ -206,22 +210,25 @@ small {
     box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 0 16px var(--glow);
 }
 .card-tag {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     color: var(--text-gray);
     font-family: var(--font-text);
     display: block;
     margin-bottom: 5px;
 }
 
-/* 移动端适配 */
+/* 移动端适配 字号同步缩小 */
 @media (max-width: 768px) {
     .container {
         padding: 18px;
         margin: 90px 16px 30px;
     }
-    h1 { font-size: 1.9rem; }
+    h1 { font-size: 1.75rem; }
+    h2 { font-size:1.2rem; }
     .avatar { width: 130px; height: 130px; }
     section { padding: 16px; }
     .navbar a { margin: 0 5px; font-size: 0.78rem; }
     .article-grid { grid-template-columns: repeat(2,1fr); }
+    #beijing-time { font-size:0.95rem; }
+    .subtitle { font-size:0.98rem; }
 }
