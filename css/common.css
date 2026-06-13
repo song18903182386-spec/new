@@ -1,1 +1,231 @@
-111
+/* 载入本地人寿隶书 zhongshou */
+@font-face {
+    font-family: "zhongshou";
+    src: local("zhongshou"), local("中国人寿保险股份有限公司字体");
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    /* 标题优先使用你本机的 zhongshou 隶书，无该字体自动 fallback 备选 */
+    --font-title: "zhongshou", "LiSu", "STLiShu", "STLiti", "KaiTi", serif;
+    --font-text: "Microsoft YaHei", system-ui, sans-serif;
+    --main: #a5c0e0;
+    --light: #d0def0;
+    --bg-page: #060810;
+    --star-bg: linear-gradient(175deg, #020306 0%, #060810 50%, #0a0d1b 100%);
+    --text-normal: #e6edf7;
+    --text-gray: #98a8c0;
+    --card-alpha: rgba(160, 180, 210, 0.07);
+    --block-alpha: rgba(160, 180, 210, 0.03);
+    --glow: rgba(165, 192, 224, 0.32);
+    --grad1: rgba(165, 192, 224, 0.18);
+    --grad2: rgba(100, 130, 170, 0.06);
+    --meteor-color: #d0def0;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(6, 8, 16, 0.92);
+    backdrop-filter: blur(20px);
+    z-index: 999;
+    padding: 12px 0;
+    text-align: center;
+    border-bottom: 1px solid transparent;
+    background-image: linear-gradient(rgba(6,8,16,0.92),rgba(6,8,16,0.92)),linear-gradient(90deg, transparent, var(--light), transparent);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+.navbar a {
+    margin: 0 14px;
+    color: var(--text-normal);
+    font-size: 0.92rem;
+    font-family: var(--font-title);
+    transition: 0.3s ease;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+.navbar a:hover {
+    color: var(--main);
+    text-shadow: 0 0 10px var(--glow);
+}
+
+::selection {
+    background: var(--main);
+    color: #000;
+}
+
+#beijing-time{
+    margin:22px 0;
+    font-size:1.08rem;
+    color:var(--light);
+    font-weight:500;
+    font-family: var(--font-title);
+    text-align:center;
+    line-height:1.85;
+    letter-spacing: 1px;
+}
+
+#starfield{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    pointer-events:none;
+    background: var(--star-bg);
+}
+
+body {
+    font-family: var(--font-text);
+    margin: 0;
+    padding: 0;
+    background:var(--bg-page);
+    min-height: 100vh;
+    color: var(--text-normal);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 920px;
+    margin: 110px auto 40px;
+    padding: 42px 36px;
+    text-align:center;
+    background: var(--card-alpha);
+    backdrop-filter: blur(22px);
+    border-radius: 26px;
+    box-shadow: 0 18px 55px rgba(0,0,0,0.7), 0 0 35px rgba(165,192,224,0.05);
+    border: 1px solid transparent;
+    background-image: linear-gradient(var(--card-alpha), var(--card-alpha)), linear-gradient(135deg, var(--grad1), var(--grad2));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    position:relative;
+    z-index:1;
+    animation: fadeIn 0.8s ease forwards;
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    color: var(--main);
+    font-size: 2.4rem;
+    font-family: var(--font-title);
+    margin-bottom: 8px;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+}
+.subtitle {
+    color: var(--text-gray);
+    font-size: 1.15rem;
+    font-family: var(--font-title);
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+}
+
+.avatar {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    margin: 26px auto;
+    display: block;
+    object-fit: cover;
+    border: 5px solid var(--main);
+    box-shadow: 0 0 24px var(--glow);
+    background: rgba(165,192,224,0.12);
+    animation: glow 4s infinite ease-in-out;
+}
+@keyframes glow {
+    0% { box-shadow: 0 0 18px var(--glow); }
+    50% { box-shadow: 0 0 32px var(--glow); }
+    100% { box-shadow: 0 0 18px var(--glow); }
+}
+
+section {
+    margin-top: 26px;
+    padding: 22px;
+    background: var(--block-alpha);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.3s ease;
+}
+section:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.07);
+    border-color: var(--main);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35), 0 0 12px var(--glow);
+}
+
+h2 {
+    color: var(--main);
+    font-family: var(--font-title);
+    margin-top: 0;
+    letter-spacing: 0.8px;
+    font-weight: 500;
+}
+p {
+    line-height: 1.85;
+    font-size: 1rem;
+    font-family: var(--font-text);
+}
+a {
+    color: var(--main);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+a:hover {
+    color: var(--light);
+    text-shadow: 0 0 5px var(--glow);
+}
+small {
+    color: var(--text-gray);
+    line-height: 1.6;
+    font-family: var(--font-text);
+}
+
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+}
+.article-card {
+    padding: 16px 10px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 12px;
+    border: 1px solid var(--glow);
+    transition: 0.25s ease;
+}
+.article-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    background: rgba(255,255,255,0.09);
+    border-color: var(--main);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 0 16px var(--glow);
+}
+.card-tag {
+    font-size: 0.72rem;
+    color: var(--text-gray);
+    font-family: var(--font-text);
+    display: block;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 18px;
+        margin: 90px 16px 30px;
+    }
+    h1 { font-size: 1.9rem; }
+    .avatar { width: 130px; height: 130px; }
+    section { padding: 16px; }
+    .navbar a { margin: 0 5px; font-size: 0.78rem; }
+    .article-grid { grid-template-columns: repeat(2,1fr); }
+}
