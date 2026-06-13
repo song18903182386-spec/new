@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>关于我 | 宋杨 | 网络墓志铭</title>
     <link rel="stylesheet" href="css/common.css">
-    <!-- 把统计JS放到末尾，避免异步提前加载找不到DOM -->
 </head>
 
 <body>
@@ -74,22 +73,19 @@
         © 2026 宋杨 · 人生记录网站
         </small>
     </p>
-    <!-- 统计标签放在容器最底部，DOM稳定渲染 -->
     <p style="margin-top:16px;font-size:1rem;color:var(--text-gray);">
 总访问量：<span id="busuanzi_value_site_pv"></span> &nbsp;
 访客数：<span id="busuanzi_value_site_uv"></span>
 </p>
 </div>
 
-<!-- 修复完整无语法错误音频标签 -->
+<!-- 修复完整audio标签 -->
 <audio id="bgMusic" loop preload="auto">
     <source src="bgm.mp3" type="audio/mpeg">
 
 
-<!-- 公共星空、时间脚本 -->
 <script src="js/common.js"></script>
 
-<!-- 背景音乐切换逻辑 -->
 <script>
 const bgMusic = document.getElementById('bgMusic');
 let audioInit = false;
@@ -103,7 +99,7 @@ document.body.addEventListener('click', () => {
 });
 </script>
 
-<!-- 统计脚本放到页面最底部，所有DOM加载完成再执行，100%识别span -->
-<script async src="https://busuanzi.ibruce.info/busuanzi.pure.mini.js"></script>
+<!-- 统计脚本放在最末尾 -->
+<script src="https://busuanzi.ibruce.info/busuanzi.pure.mini.js"></script>
 </body>
 </html>
