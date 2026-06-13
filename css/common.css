@@ -1,15 +1,10 @@
-/* 载入本地人寿隶书 zhongshou */
-@font-face {
-    font-family: "zhongshou";
-    src: local("zhongshou"), local("中国人寿保险股份有限公司字体");
-    font-weight: normal;
-    font-style: normal;
-}
-
+/* 已移除本地人寿隶书字体定义 */
 :root {
-    /* 标题优先使用你本机的 zhongshou 隶书，无该字体自动 fallback 备选 */
-    --font-title: "zhongshou", "LiSu", "STLiShu", "STLiti", "KaiTi", serif;
-    --font-text: "Microsoft YaHei", system-ui, sans-serif;
+    /* 标题字体：楷体优先，系统通用，美观耐看 */
+    --font-title: "KaiTi", "STKaiti", "SimSun", serif;
+    /* 正文字体：微软雅黑，阅读舒适 */
+    --font-text: "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+
     --main: #a5c0e0;
     --light: #d0def0;
     --bg-page: #060810;
@@ -218,6 +213,7 @@ small {
     margin-bottom: 5px;
 }
 
+/* 移动端适配 */
 @media (max-width: 768px) {
     .container {
         padding: 18px;
