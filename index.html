@@ -172,8 +172,14 @@ document.body.addEventListener('click', () => {
     if (!audioInit) {
         bgMusic.play();
         audioInit = true;
+    } else {
+        if (bgMusic.paused) {
+            bgMusic.play();
+        } else {
+            bgMusic.pause();
+        }
     }
-}, { once: true });
+});
 </script>
 </body>
 </html>
