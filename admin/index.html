@@ -4,9 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>文章管理后台</title>
+  <!-- Decap CMS 样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/decap-cms@3.1.11/dist/decap-cms.css">
 </head>
 <body>
-  <!-- 在线加载Decap CMS，无需本地文件 -->
+  <!-- Decap CMS 核心脚本 -->
   <script src="https://unpkg.com/decap-cms@3.1.11/dist/decap-cms.js"></script>
+
+  <script>
+    CMS.init({
+      config: {
+        backend: {
+          name: "github",
+          repo: "song18903182386-spec/new",
+          branch: "main",
+          auth_scope: "repo"
+        },
+        media_folder: "static/img",
+        public_folder: "/static/img",
+        collections: [
+          {
+            name: "posts",
+            label: "文章帖子",
+            folder: "posts",
+            create: true, // 开启新建帖子功能
+            delete: true,
+            fields: [
+              { label: "标题", name: "title", widget: "string" },
+              { label: "分类栏目", name: "category", widget: "select", options: ["干中求活","爱学习","来去如风","家里那点事","想自驾全国"] },
+              { label: "标签", name: "tags", widget: "list" },
+              { label: "发布日期", name: "date", widget: "datetime" },
+              { label: "正文内容", name: "body", widget: "markdown" }
+            ]
+          }
+        ]
+      }
+    })
+  </script>
 </body>
 </html>
