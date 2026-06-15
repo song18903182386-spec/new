@@ -4,6 +4,7 @@ backend:
   branch: main
   client_id: 0v231ijb962I7FIPo9dr
   client_secret: 712a94fa1316262e8a411f290ee79c2a4696784d
+publish_mode: editorial_workflow # 开启草稿、审核、发布流程
 media_folder: "img/uploads"
 public_folder: "/img/uploads"
 collections:
@@ -51,3 +52,4 @@ collections:
       - {label: "标题", name: "title", widget: "string"}
       - {label: "发布日期", name: "date", widget: "datetime", format: "YYYY-MM-DD"}
       - {label: "封面图", name: "cover", widget: "image", required: false}
+      - {label: "正文内容", name: "body", widget: "markdown"}
