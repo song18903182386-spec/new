@@ -1,9 +1,9 @@
 backend:
-  name: github
-  repo: song18903182386-spec/new
-  branch: main
-  client_id: 0v231ijb962I7FIPo9dr
-  client_secret: 4b2414e9c637dbf9eb032f0260c60a4255fff9a8
+ name: github
+ repo: song18903182386-spec/new
+ branch: main
+ client_id: 0v231ijb962I7FIPo9dr
+ client_secret: 4b2414e9c637dbf9eb032f0260c60a4255fff9a8
 media_folder: "img/uploads"
 public_folder: "/img/uploads"
 collections:
