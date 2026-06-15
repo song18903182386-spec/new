@@ -3,7 +3,7 @@ backend:
   repo: song18903182386-spec/new
   branch: main
   client_id: 0v231ijb962I7FIPo9dr
-  client_secret: 712a94fa1316262e8a411f290ee79c2a4696784d
+  client_secret: 4b2414e9c637dbf9eb032f0260c60a4255fff9a8
 publish_mode: editorial_workflow # 开启草稿、审核、发布流程
 media_folder: "img/uploads"
 public_folder: "/img/uploads"
