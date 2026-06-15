@@ -4,13 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>文章管理后台</title>
-  <!-- Decap CMS 样式 -->
   <link rel="stylesheet" href="https://unpkg.com/decap-cms@3.1.11/dist/decap-cms.css">
 </head>
 <body>
-  <!-- Decap CMS 核心脚本 -->
   <script src="https://unpkg.com/decap-cms@3.1.11/dist/decap-cms.js"></script>
-
   <script>
     CMS.init({
       config: {
@@ -20,8 +17,9 @@
           branch: "main",
           auth_scope: "repo"
         },
-        media_folder: "static/img",
-        public_folder: "/static/img",
+        // 适配你现有的上传目录 img/uploads
+        media_folder: "img/uploads",
+        public_folder: "/img/uploads",
         collections: [
           {
             name: "posts",
